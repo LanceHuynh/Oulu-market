@@ -211,6 +211,7 @@ a.account {
     color: #fff;
     background-color: #01a185;
     padding: 6px 20px;
+    margin-left: 3px;
     text-decoration: none;
 }
 a.account:hover {
