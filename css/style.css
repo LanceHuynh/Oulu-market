@@ -26,7 +26,7 @@ input[type="button"],input[type="submit"]{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;		
+	margin:0;
 	font-weight:400;
 	font-family: 'Ubuntu Condensed', sans-serif;
     transition:0.5s all;
@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6{
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
-}	
+}
 p{
 	margin:0;
 	font-family: 'Open Sans', sans-serif;
@@ -769,7 +769,7 @@ p.creating{
 .trending-ads {
     padding: 70px 0px;
 }
-.flex-slider{	
+.flex-slider{
 	background:#242a2c;
 	padding:100px 0;
 }
@@ -926,7 +926,7 @@ span.price:after {
 	-ms-transition:0.5s all;
 }
 .biseller-column:hover span.price:after {
-    border-color: rgba(243, 197, 0, 0.79) transparent transparent transparent;	
+    border-color: rgba(243, 197, 0, 0.79) transparent transparent transparent;
     transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
@@ -1158,7 +1158,7 @@ ul.location li:nth-child(2) {
     position: absolute;
     top: 50%;
     left: 0;
-    width: 44%;
+    width: 40%;
     height: 1px;
     background: #545556;
 }
@@ -1167,7 +1167,7 @@ ul.location li:nth-child(2) {
     position: absolute;
     top: 50%;
     right: 0;
-    width: 44%;
+    width: 40%;
     height: 1px;
     background: #545556;
 }
@@ -1257,7 +1257,7 @@ span.total strong {
 	color:#01a185;
 }
 .sub-categories {
-    margin-top: 20px;   
+    margin-top: 20px;
 	margin-left: 20px;
 }
 .sub-categories ul li {
@@ -1401,7 +1401,7 @@ a.tag20 {
     margin: 0px 10px 0 0;
 }
 .tags a{
-	text-decoration:none;	
+	text-decoration:none;
 	color: #9C9C9C;
 }
 .tags p {
@@ -1974,11 +1974,11 @@ form input[type="submit"]:focus {
 
 
 #upload{
-    
+
 }
 
 #drop{
-    
+
 }
 
 #drop a{
@@ -2075,7 +2075,6 @@ form#upload {
     margin: 4% auto 0;
 }
 form.submit {
-    text-align: left;
     margin-top: 20px;
 }
 /*-- //Contact --*/
@@ -2361,7 +2360,7 @@ h3.sear-head {
 }
 .search-hotel{
 padding: 15px 0;
-border-bottom: 1px solid #e5e3db; 
+border-bottom: 1px solid #e5e3db;
 }
 /*-- Slider range --*/
 ul.dropdown-menu6 ,ul.dropdown-menu5{
@@ -2394,7 +2393,7 @@ text-decoration: none;
 }
 .range,.brand-select,.featured-ads{
 padding: 25px 0 30px 0;
-border-bottom: 1px solid #e5e3db; 
+border-bottom: 1px solid #e5e3db;
 }
 .side-bar {
     background-color: #F9F9F9;
@@ -2840,7 +2839,7 @@ margin-bottom: 10px;
 	opacity: 0.9;
 	background:#4FAFC2;
 	color:white;
-}	
+}
 
 .button.red{
 background-color:palevioletred;
@@ -2879,7 +2878,7 @@ section.list-right span.price:after {
 /*-- Feedback-page --*/
 .feedback {
 	padding-bottom:50px;
-} 
+}
 .feed-back h3 {
 	font-weight: 400;
     font-size: 25px;
@@ -2930,7 +2929,7 @@ section.list-right span.price:after {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
-.feed-back-form input[type="submit"]:hover 
+.feed-back-form input[type="submit"]:hover
 	color: #000;
 	background-color: #01a185;
 }
@@ -3404,7 +3403,7 @@ label {
 	}
 	.app-left img {
 		width: 85%;
-	}	
+	}
 	.app-right {
 		margin-top: 40px;
 		padding-left: 0;
@@ -3809,7 +3808,7 @@ label {
 	}
 	.sign-up {
 		width: 60%;
-	}	
+	}
 }
 @media (max-width: 800px){
 	.app-right h3 {
@@ -3912,7 +3911,7 @@ label {
 	}
 	.post-ad-form form label {
 		width: 23%;
-	}	
+	}
 	p.post-terms {
 		margin-left: 26%;
 		line-height: 1.7;
@@ -3944,7 +3943,7 @@ label {
 	}
 	.btn-group.bootstrap-select.show-tick button {
 		width: 100%;
-	}	
+	}
 	#custom-search-input {
 		width: 48.5%;
 	}
@@ -3977,7 +3976,7 @@ label {
 		padding: 8px 40px;
 		font-size: 18px;
 	}
-	.upload h3.tlt {	
+	.upload h3.tlt {
 		margin-top: 11px;
 		font-size: 20px;
 	}
@@ -4102,7 +4101,7 @@ label {
 		padding: 0px 0 5px;
 	}
 	span.active.uls-trigger, .btn-primary {
-		margin-top: 10px;	
+		margin-top: 10px;
 	}
 	a.account {
 		margin-top: 10px;
@@ -4113,7 +4112,7 @@ label {
 	}
 	a.account:hover {
 		background: transparent;
-		color: #6D6D6D;		
+		color: #6D6D6D;
 	}
 	.app-right {
 		margin-top: 20px;
@@ -4156,7 +4155,7 @@ label {
 	.sign-up {
 		width: 90%;
 	}
-	.sign-up2 {	
+	.sign-up2 {
 		width: 65%;
 	}
 	.sign-up1 {
@@ -4312,7 +4311,7 @@ label {
 	}
 	.popular-regions ul li {
 		width: 50%;
-	}	
+	}
 	.popular-category {
 		width: 50%;
 	}
@@ -4689,7 +4688,7 @@ label {
 	}
 	.app-left {
 		width: 75%;
-		margin-left: 12.5%;	
+		margin-left: 12.5%;
 	}
 	footer.diff {
 		padding: 0 15px;
@@ -4765,7 +4764,7 @@ label {
 		width: 70%;
 	}
 	.modal-lg {
-		width: 300px;	
+		width: 300px;
 	}
 	.modal-content {
 		padding: 0px;
@@ -4790,9 +4789,3 @@ label {
 		padding: 20px 0px;
 	}
 }
-
-
-
-
-
-
