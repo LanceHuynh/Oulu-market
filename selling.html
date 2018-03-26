@@ -7,12 +7,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Oulu Market</title>
+<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Post Ad :: w3layouts</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-select.css">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -72,17 +70,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				} );
 			} );
 		</script>
+		<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
+    <script src="js/easyResponsiveTabs.js"></script>
 </head>
 <body>
-	<div class="header">
-		<div class="container">
-			<div class="logo">
+  <div class="header">
+    <div class="container">
+      <div class="logo">
         <a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
-			</div>
-			<div class="header-right">
+      </div>
+      <div class="header-right">
       <br>
-			<a class="account" href="login.html">My Account</a>
-			<a class="account" href="contact.html">Contact</a>
+      <a class="account" href="login.html">My Account</a>
+      <a class="account" href="contact.html">Contact</a>
 				<script>
 				$('#myModal').modal('');
 				</script>
@@ -92,40 +92,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="main-banner banner text-center">
 	  <div class="container">
-			<h1>The first bazaar<span class="segment-heading">    in Oulu</span> with delivery</h1>
+      <h1>The first bazaar<span class="segment-heading">    in Oulu</span> with delivery</h1>
 			<p>Software development project 2</p>
-      <a href="selling.html">Start selling</a>
-			<a href="buying.html">Start buying</a>
 	  </div>
 	</div>
-  <!-- Who we are -->
-			<div class="trending-ads">
-				<div class="container">
-			</div>
-			<div class="mobile-app">
-				<div class="container">
-					<div class="col-md-5 app-left">
-						<a href="mobileapp.html"><img src="images/app.png" alt=""></a>
-					</div>
-					<div class="col-md-7 app-right">
-						<h3>Oulu Market is the <span>BEST</span> way for Selling and buying second-hand goods</h3>
-            <p>We are OAMK students. This site was create for Software Development project 2<br>
-            GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
-						<div class="app-buttons">
-							<div class="app-button">
-								<a href="#"><img src="images/1.png" alt=""></a>
-							</div>
-							<div class="app-button">
-								<a href="#"><img src="images/2.png" alt=""></a>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+	<!-- Submit Ad -->
+	<div class="submit-ad main-grid-border">
+		<div class="container">
+			<h2 class="head">Post an Add</h2>
+			<div class="post-ad-form">
+				<form>
+					<label>Select Category <span>*</span></label>
+					<select class="">
+					  <option>Select Category</option>
+					  <option>Mobiles</option>
+					  <option>Electronics and Appliances</option>
+					  <option>Furniture</option>
+					  <option>Books, Sports and hobbies</option>
+					  <option>Fashion</option>
+					  <option>Kids</option>
+					</select>
 					<div class="clearfix"></div>
+					<label>Add Title <span>*</span></label>
+					<input type="text" class="phone" placeholder="">
+					<div class="clearfix"></div>
+					<label>Add Description <span>*</span></label>
+					<textarea class="mess" placeholder="Write few lines about your product"></textarea>
+					<div class="clearfix"></div>
+				<div class="upload-ad-photos">
+				<label>Photos for your add :</label>
+					<div class="photos-upload-view">
+						<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
+
+						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+						<div>
+							<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+							<div id="filedrag">or drop files here</div>
+						</div>
+
+						<div id="submitbutton">
+							<button type="submit">Upload Files</button>
+						</div>
+
+						</form>
+
+						<div id="messages">
+						<p>Status Messages</p>
+						</div>
+						</div>
+					<div class="clearfix"></div>
+						<script src="js/filedrag.js"></script>
 				</div>
+					<div class="personal-details">
+					<form>
+						<label>Your Name <span>*</span></label>
+						<input type="text" class="name" placeholder="">
+						<div class="clearfix"></div>
+						<label>Your Email Address<span>*</span></label>
+						<input type="text" class="email" placeholder="">
+						<div class="clearfix"></div>
+						<p class="post-terms">By clicking <strong>post Button</strong> you accept our Terms of Use and Privacy Policy</p>
+					<input type="submit" value="Post">
+					<div class="clearfix"></div>
+					</form>
+					</div>
 			</div>
 		</div>
-		<!--footer section start-->
+	</div>
+	<!-- // Submit Ad -->
+	<!--footer section start-->
 		<footer>
 			<div class="footer-bottom text-center">
 			<div class="container">
