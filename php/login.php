@@ -117,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="new_people">
 							<h2>For New People</h2>
 							<p>If you don't have an account please fell free to register and start shopping.</p>
-							<a href="register.html">Register Now!</a>
+							<a href="register.php">Register Now!</a>
 						</div>
 					</div>
 				</div>
