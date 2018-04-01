@@ -4,15 +4,14 @@ $servername = 'mysli.oamk.fi';
 $username = $config['username'];
 $password = $config['password'];
 $dbname = $config['db'];
+	
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect($servername, $username, $password, $dbname);
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
 ?>

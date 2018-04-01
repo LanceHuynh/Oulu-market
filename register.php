@@ -76,20 +76,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 require_once 'database/connection.php';
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $email = $password = $confirm_password = "";
+$username_err = $email_err = $password_err = $confirm_password_err = $registration_succ = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } else{
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Please enter a email.";
+    }
+    else{
         // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT id FROM user WHERE email = ?";
 
         if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
+
+            // Set parameters
+            $param_email = trim($_POST["email"]);
+
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $email_err = "This email is already registered.";
+                } else{
+                    $email = trim($_POST["email"]);
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+
+	if(empty(trim($_POST["username"]))){
+		$username_err = "Please enter username.";
+    }else{
+		//Check if username exists
+		$sql = "SELECT id FROM user WHERE username = ?";
+
+		if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
@@ -102,7 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "This username already exists.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
@@ -110,10 +142,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
-
         // Close statement
         mysqli_stmt_close($stmt);
-    }
+	}
 
     // Validate password
     if(empty(trim($_POST['password']))){
@@ -135,23 +166,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO user (username, email, password, active, userLevel) VALUES (?, ?, ?, ?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sssii", $param_username, $param_email, $param_password, $param_active, $param_userLvl);
 
             // Set parameters
             $param_username = $username;
+			$param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+			$param_active = 1;
+			$param_userLvl = 2;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                $registration_succ = "You have been registered. Please proceed to login page.";
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -183,15 +217,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<div class="graphs">
 					<div class="sign-up">
 						<h1>Create an account</h1>
-						<br/><br />
+						<br/>
+						<h3><?php echo $registration_succ; ?></h3>
+						<br />
 						<h2>Personal Information</h2>
 						<div class="sign-u">
 							<div class="sign-up1">
 								<h4>Email Address* :</h4>
 							</div>
-							<div class="sign-up2 form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-									<input type="text" name="username"class="form-control" value="<?php echo $username; ?>"/>
-									<span class="help-block"><?php echo $username_err; ?></span>
+							<div class="sign-up2 form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+									<input type="text" name="email"class="form-control" value="<?php echo $email; ?>"/>
+									<span class="help-block"><?php echo $email_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -199,8 +235,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							<div class="sign-up1">
 								<h4>User Name* :</h4>
 							</div>
-							<div class="sign-up2">
-									<input type="text" name="username" class="form-control"/>
+							<div class="sign-up2 form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+									<input type="text" name="username" class="form-control" value="<?php echo $username; ?>"/>
+									<span class="help-block"><?php echo $username_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
