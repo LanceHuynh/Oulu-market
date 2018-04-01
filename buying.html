@@ -72,6 +72,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				} );
 			} );
 		</script>
+<!--Styles for search bar-->
+<style>
+	#search_bar_container{text-align: center}
+	#search_bar {
+		background: #fff;
+	    width: 81%;
+	    outline: none;
+	    padding: 11px 10px 10px 10px;
+	    font-size: 13px;
+	    color: #c4c4c4;
+	}
+	#search_bar_button{
+		background: url(images/search.png) no-repeat 13px 11px rgba(24, 169, 158, 0.47);
+	    width: 44px;
+	    height: 39px;
+	    border: none;
+	    padding: 0;
+	    margin-top: 0;
+	}
+</style>
+<!--End Styles for search bar-->
 </head>
 <body>
 	<div class="header">
@@ -99,6 +120,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="content">
 			<div class="categories">
 				<div class="container">
+					<form id=search_bar_container>
+						<input id="search_bar" type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
+						<input id="search_bar_button" type="submit" value=" ">
+					</form>
 					<div class="col-md-2 focus-grid">
 						<a href="mobiles.html">
 							<div class="focus-border">
