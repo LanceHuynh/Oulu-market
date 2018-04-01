@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter a email.";
     }
-    elseif(filter_var(($_POST["email"]), FILTER_VALIDATE_EMAIL)){
+    elseif(!filter_var(($_POST["email"]), FILTER_VALIDATE_EMAIL)){
     	$email_err = "Invalid email format";
     }
     else{
