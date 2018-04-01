@@ -81,10 +81,13 @@ $username_err = $email_err = $password_err = $confirm_password_err = $registrati
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // Validate username
+	
+	// Validate email
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter a email.";
+    }
+    elseif(filter_var(($_POST["email"]), FILTER_VALIDATE_EMAIL)){
+    	$email_err = "Invalid email format";
     }
     else{
         // Prepare a select statement
@@ -115,6 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         mysqli_stmt_close($stmt);
     }
 
+    // Validate username
 	if(empty(trim($_POST["username"]))){
 		$username_err = "Please enter username.";
     }else{
