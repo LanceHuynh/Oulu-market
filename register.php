@@ -189,7 +189,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                $registration_succ = "You have been registered. Please proceed to login page.";
+                $registration_succ = "You have been registered. Please proceed to <a href=\"http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php\">login page.</a>";
             } else{
                 echo "Something went wrong. Please try again later.";
             }
