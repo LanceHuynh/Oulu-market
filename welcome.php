@@ -1,6 +1,6 @@
 
 
-    <?php
+<?php
 
     // Initialize the session
 
@@ -18,7 +18,7 @@
 
     }
 
-    ?>
+?>
 
      
 

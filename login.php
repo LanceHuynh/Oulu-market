@@ -77,7 +77,7 @@ require_once 'database/connection.php';
 
 // Define variables and initialize with empty values
 $email = $password = "";
-$email_err = $password_err = $login_succ = "";
+$email_err = $password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
