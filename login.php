@@ -230,7 +230,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Email Address :</h4>
 								</div>
 								<div class="sign-up2 form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-										<input type="text" name="email"class="form-control" value="<?php echo $email; ?>"/>
+										<input type="text" name="email" placeholder="Your email address" class="form-control" value="<?php echo $email; ?>"/>
 										<span class="help-block"><?php echo $email_err; ?></span>
 								</div>
 								<div class="clearfix"> </div>
@@ -240,7 +240,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Password :</h4>
 								</div>
 								<div class="sign-up2 form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-										<input type="text" name="password"class="form-control" value="<?php echo $password; ?>"/>
+										<input type="text" name="password" placeholder="Your password" class="form-control" value="<?php echo $password; ?>"/>
 										<span class="help-block"><?php echo $password_err; ?></span>
 										
 								</div>
