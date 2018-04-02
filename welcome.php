@@ -46,7 +46,7 @@
 
         <div class="page-header">
 
-            <h1>Hi, <b><?php echo htmlspecialchars($_SESSION['email']); ?></b>. Welcome to Oulu Market.</h1>
+            <h4>Hi, <b><?php echo htmlspecialchars($_SESSION['email']); ?></b>. Welcome to Oulu Market.<h4>
 
         </div>
 
