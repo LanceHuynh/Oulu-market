@@ -83,14 +83,14 @@ $email_err = $password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	
-	// Check if email is empty
+	// Validate email
 	if(empty(trim($_POST["email"]))){
 		$email_err = 'Please enter your email.';
 	} else{
 		$email = trim($_POST["email"]);
 	}
 	
-	// Check if password is empty
+	// Validate password
 	if(empty(trim($_POST['password']))){
 		$password_err = 'Please enter your password.';
 	} else{
