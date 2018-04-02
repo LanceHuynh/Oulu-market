@@ -154,7 +154,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST['password']))){
         $password_err = "Please enter a password.";
     } elseif(strlen(trim($_POST['password'])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Password must have at least 6 characters.";
     } else{
         $password = trim($_POST['password']);
     }
@@ -189,7 +189,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                $registration_succ = "You have been registered. Please proceed to login page.";
+                $registration_succ = "You have been registered. Please proceed to <a href=\"http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php\">login page.</a>";
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -210,7 +210,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
 		</div>
 		<div class="header-right">
-			<a class="account" href="login.html">My Account</a>
+			<a class="account" href="login.php">My Account</a>
 			<a class="account" href="contact.html">Contact</a>
 		</div>
 	</div>
@@ -230,17 +230,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<h4>Email Address* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-									<input type="text" name="email"class="form-control" value="<?php echo $email; ?>"/>
+									<input type="text" name="email"placeholder="Your email address" class="form-control" value="<?php echo $email; ?>"/>
 									<span class="help-block"><?php echo $email_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 						<div class="sign-u">
 							<div class="sign-up1">
-								<h4>User Name* :</h4>
+								<h4>Username* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-									<input type="text" name="username" class="form-control" value="<?php echo $username; ?>"/>
+									<input type="text" name="username" placeholder="Your username" class="form-control" value="<?php echo $username; ?>"/>
 									<span class="help-block"><?php echo $username_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
@@ -250,7 +250,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<h4>Password* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-									<input type="password" name="password" class="form-control" value="<?php echo $password; ?>"/>
+									<input type="password" name="password" placeholder="Your password" class="form-control" value="<?php echo $password; ?>"/>
 									<span class="help-block"><?php echo $password_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
@@ -260,7 +260,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<h4>Confirm Password* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-									<input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>"/>
+									<input type="password" name="confirm_password" placeholder="Confirm password" class="form-control" value="<?php echo $confirm_password; ?>"/>
 									<span class="help-block"><?php echo $confirm_password_err; ?></span>
 							</div>
 							<div class="clearfix"> </div>
