@@ -191,7 +191,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Password :</h4>
 								</div>
 								<div class="sign-up2 form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-										<input type="text" name="password" placeholder="Your password" class="form-control" value="<?php echo $password; ?>"/>
+										<input type="password" name="password" placeholder="Your password" class="form-control" value="<?php echo $password; ?>"/>
 										<span class="help-block"><?php echo $password_err; ?></span>
 										
 								</div>
