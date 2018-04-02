@@ -10,7 +10,7 @@
 
     // If session variable is not set it will redirect to login page
 
-    if(!isset($_SESSION['email']) || empty($_SESSION['email'])){
+    if(!isset($_SESSION['login']) || empty($_SESSION['login'])){
 
       header("location: login.php");
 
@@ -46,7 +46,7 @@
 
         <div class="page-header">
 
-            <h4>Hi, <b><?php echo htmlspecialchars($_SESSION['email']); ?></b>. Welcome to Oulu Market.<h4>
+            <h4>Hi, <b><?php echo htmlspecialchars($_SESSION['login']); ?></b>. Welcome to Oulu Market.<h4>
 
         </div>
 

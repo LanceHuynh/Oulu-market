@@ -73,89 +73,157 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <?php 
-// Include config file
-require_once 'database/connection.php';
-
-// Define variables and initialize with empty values
-$email = $password = "";
-$email_err = $password_err = "";
-
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+	// Include config file
+	require_once 'database/connection.php';
 	
-	// Check if email is empty
-	if(empty(trim($_POST["email"]))){
-		$email_err = 'Please enter your email.';
-	} else{
-		$email = trim($_POST["email"]);
+	// Define variables and initialize with empty values
+	// $login is used for either email or username
+	$login = $password = "";
+	$login_err = $password_err = "";
+	
+	function is_email($str)
+	{
+		//If the input string is an e-mail, returns true
+		if(filter_var($str, FILTER_VALIDATE_EMAIL)) {
+			return true;
+		} else {	
+			return false;
+		}
 	}
 	
-	// Check if password is empty
-	if(empty(trim($_POST['password']))){
-		$password_err = 'Please enter your password.';
-	} else{
-		$password = trim($_POST['password']);
-	}
-	
-	// Validate credentials
-	if(empty($email_err) && empty($password_err)){
+	// Processing form data when form is submitted
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
-		// Prepare a select statement
-		$sql = "SELECT email, password FROM user WHERE email = ?";
-		
-		if($stmt = mysqli_prepare($link, $sql)){
-			
-			// Bind variables to the prepared statement as parameters	
-			mysqli_stmt_bind_param($stmt, "s", $param_email);
-			
-			// Set parameters
-			$param_email = $email;
-			
-			// Attempt to execute the prepared statement
-			if(mysqli_stmt_execute($stmt)){
-				
-				// Store result
-				mysqli_stmt_store_result($stmt);
-				
-				// Check if email exists, if yes then verify password
-				if(mysqli_stmt_num_rows($stmt) == 1){
-					
-					// Bind result variables
-					mysqli_stmt_bind_result($stmt, $email, $hashed_password);
-					
-					if(mysqli_stmt_fetch($stmt)){
-						if(password_verify($password, $hashed_password)){
-							
-							/* Password is correct, so start a new session and
-							save the username to the session */
-							session_start();	
-							$_SESSION['email'] = $email;
-							header("location: welcome.php");
-							
-						} else{
-							// Display an error message if password is not valid
-							$password_err = 'The password you entered was not valid.';
-						}
-					}
-					
-				} else{
-					// Display an error message if email doesn't exist
-					$email_err = 'No account found with that email.';
-				}
-				
-			} else{
-				echo "Oops! Something went wrong. Please try again later.";
-			}
+		// Check if email or username is empty
+		if(empty(trim($_POST["login"]))){
+			$login_err = 'Please enter your email or username.';
+		} else{
+			$login = trim($_POST["login"]);
 		}
 		
-		// Close statement
-		mysqli_stmt_close($stmt);
+		// Check if password is empty
+		if(empty(trim($_POST['password']))){
+			$password_err = 'Please enter your password.';
+		} else{
+			$password = trim($_POST['password']);
+		}
 		
+		// Validate credentials
+		if(empty($login_err) && empty($password_err)){
+			
+			// If $login is email
+			if(is_email($login)){
+				// Prepare a select statement
+				$sql = "SELECT email, password FROM user WHERE email = ?";
+				
+				if($stmt = mysqli_prepare($link, $sql)){
+					
+					// Bind variables to the prepared statement as parameters	
+					mysqli_stmt_bind_param($stmt, "s", $param_login);
+					
+					// Set parameters
+					$param_login = $login;
+					
+					// Attempt to execute the prepared statement
+					if(mysqli_stmt_execute($stmt)){
+						
+						// Store result
+						mysqli_stmt_store_result($stmt);
+						
+						// Check if email exists, if yes then verify password
+						if(mysqli_stmt_num_rows($stmt) == 1){
+							
+							// Bind result variables
+							mysqli_stmt_bind_result($stmt, $login, $hashed_password);
+							
+							if(mysqli_stmt_fetch($stmt)){
+								if(password_verify($password, $hashed_password)){
+									
+									/* Password is correct, so start a new session and
+									save the username to the session */
+									session_start();	
+									$_SESSION['login'] = $login;
+									header("location: welcome.php");
+									
+								} else{
+									// Display an error message if password is not valid
+									$password_err = 'The password you entered was not valid.';
+								}
+							}
+							
+						} else{
+							// Display an error message if email doesn't exist
+							$login_err = 'No account was found with that email or username.';
+						}
+						
+					} else{
+						echo "Oops! Something went wrong. Please try again later.";
+					}
+					
+					// Close statement
+					mysqli_stmt_close($stmt);
+				}
+			}
+			
+			// If $login is username
+			elseif (!is_email($login))
+				// Prepare a select statement
+				$sql = "SELECT username, password FROM user WHERE username = ?";
+				
+				if($stmt = mysqli_prepare($link, $sql)){
+					
+					// Bind variables to the prepared statement as parameters
+					mysqli_stmt_bind_param($stmt, "s", $param_login);
+					
+					// Set parameters
+					$param_login = $login;
+					
+					// Attempt to execute the prepared statement
+					if(mysqli_stmt_execute($stmt)){
+						
+						// Store result
+						mysqli_stmt_store_result($stmt);
+						
+						// Check if email exists, if yes then verify password
+						if(mysqli_stmt_num_rows($stmt) == 1){
+							
+							// Bind result variables
+							mysqli_stmt_bind_result($stmt, $login, $hashed_password);
+							
+							if(mysqli_stmt_fetch($stmt)){
+								if(password_verify($password, $hashed_password)){
+									
+									/* Password is correct, so start a new session and
+									 save the username to the session */
+									session_start();
+									$_SESSION['login'] = $login;
+									header("location: welcome.php");
+									
+								} else{
+									// Display an error message if password is not valid
+									$password_err = 'The password you entered was not valid.';
+								}
+							}
+							
+						} else{
+							// Display an error message if email doesn't exist
+							$login_err = 'No account was found with that email or username.';
+						}
+						
+					} else{
+						echo "Oops! Something went wrong. Please try again later.";
+					}
+		
+				
+					// Close statement
+					mysqli_stmt_close($stmt);
+				}
+			}
+		
+		
+		// Close connection
+		mysqli_close($link);
 	}
-	
-	// Close connection
-	mysqli_close($link);
-}
 ?>
 
 <body>
@@ -178,11 +246,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							<h1>Log in to your account</h1>
 							<div class="sign-u">
 								<div class="sign-up1">
-									<h4>Email Address :</h4>
+									<h4>Email Or Username :</h4>
 								</div>
-								<div class="sign-up2 form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-										<input type="text" name="email" placeholder="Your email address" class="form-control" value="<?php echo $email; ?>"/>
-										<span class="help-block"><?php echo $email_err; ?></span>
+								<div class="sign-up2 form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
+										<input type="text" name="login" placeholder="Your email or username" class="form-control" value="<?php echo $login; ?>"/>
+										<span class="help-block"><?php echo $login_err; ?></span>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
