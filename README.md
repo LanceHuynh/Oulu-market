@@ -1,4 +1,4 @@
 # Oulu-market
 
-An e-commerce website project. 
+A project for an e-commerce website. 
 To be continued.
