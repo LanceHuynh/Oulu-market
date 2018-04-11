@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $welcome =  "My Account";
@@ -87,19 +87,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $name_err = "Please enter a name for your product.";
     }else{
 		$name = trim($_POST["name"]);
-		echo($name);
 	}
 	if(empty(trim($_POST["description"]))){
         $description_err = "Please enter a short description for your product.";
     }else{
 		$description = trim($_POST["description"]);
-		echo($description);
 	}
 	if(empty(trim($_POST["price"]))){
         $price_err = "Please enter a price for your product.";
     }else {
 		$price = trim($_POST["price"]);
-		echo($price);
 	}
 	$category = $_POST['category'];
 	if ($category == "Select Category")
