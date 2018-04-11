@@ -126,15 +126,9 @@ var elem=$('#container ul');
 					  <option data-tokens="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
 					  <option data-tokens="Mobiles">Mobiles</option>
 					  <option data-tokens="Electronics & Appliances">Electronics & Appliances</option>
-					  <option data-tokens="Cars">Cars</option>
-					  <option data-tokens="Bikes">Bikes</option>
 					  <option data-tokens="Furniture">Furniture</option>
-					  <option data-tokens="Pets">Pets</option>
 					  <option data-tokens="Fashion">Fashion</option>
 					  <option data-tokens="Kids">Kids</option>
-					  <option data-tokens="Services">Services</option>
-					  <option data-tokens="Jobs">Jobs</option>
-					  <option data-tokens="Real Estate">Real Estate</option>
 					</select>
 				</div>
 				<div class="search-product ads-list">
@@ -142,7 +136,7 @@ var elem=$('#container ul');
 					<div class="search">
 						<div id="custom-search-input">
 						<div class="input-group">
-							<input type="text" class="form-control input-lg" placeholder="Buscar" />
+							<input type="text" class="form-control input-lg" placeholder="Book" />
 							<span class="input-group-btn">
 								<button class="btn btn-info btn-lg" type="button">
 									<i class="glyphicon glyphicon-search"></i>
