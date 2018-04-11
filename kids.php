@@ -1,3 +1,11 @@
+﻿<?php
+	session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+	}else{
+	$welcome = "Login";
+	}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -106,7 +114,7 @@ var elem=$('#container ul');
         <a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
       </div>
       <div class="header-right">
-      <a class="account" href="login.php">My Account</a>
+      <a class="account" href="login.php"><?php echo $welcome; ?></a>
       <a class="account" href="contact.html">Contact</a>
         <script>
         $('#myModal').modal('');

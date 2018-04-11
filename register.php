@@ -1,4 +1,12 @@
-﻿<!--
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $welcome =  "My Account";
+}else{
+	$welcome = "Login";
+}
+?>
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -59,17 +67,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery.uls.languagefilter.js"></script>
 	<script src="js/jquery.uls.regionfilter.js"></script>
 	<script src="js/jquery.uls.core.js"></script>
-	<script>
-		$( document ).ready( function() {
-			$( '.uls-trigger' ).uls( {
-				onSelect : function( language ) {
-					var languageName = $.uls.data.getAutonym( language );
-					$( '.uls-trigger' ).text( languageName );
-				},
-				quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-			} );
-		} );
-	</script>
 </head>
 <?php
 // Include config file
@@ -207,11 +204,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="header">
 	<div class="container">
 		<div class="logo">
-			<a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+			<a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
 		</div>
 		<div class="header-right">
-			<a class="account" href="login.php">My Account</a>
-			<a class="account" href="contact.html">Contact</a>
+			<a class="account" href="login.php"><?php echo $welcome; ?></a>
+			<a class="account" href="contact.php">Contact</a>
 		</div>
 	</div>
 </div>
@@ -270,7 +267,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<input type="submit" value="Create">
 							</div>
 							<div class="sub_home_right">
-								<p>Go Back to <a href="index.html">Home</a></p>
+								<p>Go Back to <a href="index.php">Home</a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -283,7 +280,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<div class="footer-bottom text-center">
 				<div class="container">
 					<div class="footer-logo">
-						<a href="index.html"><span>Oulu</span>Market</a>
+						<a href="index.php"><span>Oulu</span>Market</a>
 					</div>
 					<div class="copyrights">
 						<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>

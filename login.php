@@ -1,4 +1,14 @@
-﻿<!--
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+	header("location: welcome.php");
+}
+else{
+	$welcome = "Login";
+}
+?>
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -59,17 +69,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="js/jquery.uls.languagefilter.js"></script>
 	<script src="js/jquery.uls.regionfilter.js"></script>
 	<script src="js/jquery.uls.core.js"></script>
-	<script>
-				$( document ).ready( function() {
-					$( '.uls-trigger' ).uls( {
-						onSelect : function( language ) {
-							var languageName = $.uls.data.getAutonym( language );
-							$( '.uls-trigger' ).text( languageName );
-						},
-						quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-					} );
-				} );
-	</script>
 </head>
 <?php
 	// Include config file
@@ -108,9 +107,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		// Validate credentials
 		if(empty($login_err) && empty($password_err)){
 
-			$sql_mail = "SELECT email, password FROM user WHERE email = ?";
+			$sql_mail = "SELECT email, password, id FROM user WHERE email = ?";
 
-			$sql_usr = "SELECT username, password FROM user WHERE username = ?";
+			$sql_usr = "SELECT username, password, id FROM user WHERE username = ?";
 
 			if(is_email($login)){
 				$stmt = mysqli_prepare($link, $sql_mail);
@@ -134,16 +133,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					// Check if email exists, if yes then verify password
 					if(mysqli_stmt_num_rows($stmt) == 1){
 						// Bind result variables
-						mysqli_stmt_bind_result($stmt, $login, $hashed_password);
+						mysqli_stmt_bind_result($stmt, $login, $hashed_password, $id);
 
 						if(mysqli_stmt_fetch($stmt)){
 							if(password_verify($password, $hashed_password)) {
 
 								/* Password is correct, so start a new session and
 								save the username to the session */
-								session_start();
+								$_SESSION['loggedin'] = true;
 								$_SESSION['login'] = $login;
-								header("location: welcome.php");
+								$_SESSION['id'] = $id;
+								header("location: index.php");
 							}else{
 								// Display an error message if password is not valid
 								$password_err = 'The password you entered was not valid.';
@@ -170,11 +170,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+				<a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
 			</div>
 			<div class="header-right">
-				<a class="account" href="login.php">My Account</a>
-				<a class="account" href="contact.html">Contact</a>
+				<a class="account" href="login.php"><?php echo $welcome; ?></a>
+				<a class="account" href="contact.php">Contact</a>
 			</div>
 		</div>
 	</div>
@@ -210,7 +210,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type="submit" value="Log in">
 								</div>
 								<div class="sub_home_right">
-									<p>Go Back to <a href="index.html">Home</a></p>
+									<p>Go Back to <a href="index.php">Home</a></p>
 								</div>
 								
 								<div class="clearfix"> </div>
@@ -228,7 +228,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="footer-bottom text-center">
 				 <div class="container">
 					 <div class="footer-logo">
-						 <a href="index.html"><span>Oulu</span>Market</a>
+						 <a href="index.php"><span>Oulu</span>Market</a>
 					 </div>
 					 <div class="copyrights">
 						 <p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>

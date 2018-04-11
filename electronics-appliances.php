@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+	}else{
+	$welcome = "Login";
+	}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Furnitures :: w3layouts</title>
+<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Electronics $ Appliances :: w3layouts</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-select.css">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -103,11 +111,11 @@ var elem=$('#container ul');
   <div class="header">
     <div class="container">
       <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+        <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
       </div>
       <div class="header-right">
-      <a class="account" href="login.php">My Account</a>
-      <a class="account" href="contact.html">Contact</a>
+      <a class="account" href="login.php"><?php echo $welcome; ?></a>
+      <a class="account" href="contact.php">Contact</a>
         <script>
         $('#myModal').modal('');
         </script>
@@ -121,7 +129,7 @@ var elem=$('#container ul');
 			<p>Software development project 2</p>
 	  </div>
 	</div>
-	<!-- Furnitures -->
+	<!-- Electronic appliances -->
 	<div class="total-ads main-grid-border">
 		<div class="container">
 			<div class="select-box">
@@ -502,11 +510,11 @@ var elem=$('#container ul');
 				<div class="browse-category ads-list">
 					<label>Browse Categories</label>
 					<select class="selectpicker show-tick" data-live-search="true">
-					  <option data-tokens="Furniture">Furniture</option>
-					  <option data-tokens="Mobiles">Mobiles</option>
 					  <option data-tokens="Electronics & Appliances">Electronics & Appliances</option>
+					  <option data-tokens="Mobiles">Mobiles</option>
 					  <option data-tokens="Cars">Cars</option>
 					  <option data-tokens="Bikes">Bikes</option>
+					  <option data-tokens="Furniture">Furniture</option>
 					  <option data-tokens="Pets">Pets</option>
 					  <option data-tokens="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
 					  <option data-tokens="Fashion">Fashion</option>
@@ -536,7 +544,7 @@ var elem=$('#container ul');
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 			  <li><a href="index.html">Home</a></li>
 			  <li><a href="categories.html">Categories</a></li>
-			  <li class="active">Furniture</li>
+			  <li class="active">Electronics & Appliances</li>
 			</ol>
 			<div class="ads-grid">
 				<div class="side-bar col-md-3">
@@ -576,6 +584,19 @@ var elem=$('#container ul');
 							</script>
 
 				</div>
+				<div class="brand-select">
+					<h3 class="sear-head">Category</h3>
+					  <select class="selectpicker" data-live-search="true">
+					  <option data-tokens="All">All</option>
+					  <option data-tokens="Computers">Computers</option>
+					  <option data-tokens="Hard Disk">Hard Disk</option>
+					  <option data-tokens="Internet">Internet</option>
+					  <option data-tokens="Laptops">Laptops</option>
+					  <option data-tokens="Monitors">Monitors</option>
+					  <option data-tokens="Printers">Printers</option>
+					  <option data-tokens="Other Accessories">Other Accessories</option>
+					</select>
+				</div>
 				<div class="featured-ads">
 					<h2 class="sear-head fer">Featured Ads</h2>
 					<div class="featured-ad">
@@ -605,7 +626,7 @@ var elem=$('#container ul');
 					<div class="featured-ad">
 						<a href="single.html">
 							<div class="featured-ad-left">
-								<img src="images/f2.jpg" title="ad image" alt="" />
+								<img src="images/f3.jpg" title="ad image" alt="" />
 							</div>
 							<div class="featured-ad-right">
 								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
@@ -660,11 +681,11 @@ var elem=$('#container ul');
 							<ul class="list">
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:55</span>
@@ -675,11 +696,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr2.jpg" title="" alt="" />
+									<img src="images/e2.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">It is a long established fact that a reader</h5>
 									<span class="adprice">$310</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:45</span>
@@ -690,11 +711,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr3.jpg" title="" alt="" />
+									<img src="images/e3.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Contrary to popular belief, Lorem Ipsum is not</h5>
 									<span class="adprice">$190</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:30</span>
@@ -705,11 +726,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr4.jpg" title="" alt="" />
+									<img src="images/e4.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">The standard chunk of Lorem Ipsum used since the</h5>
 									<span class="adprice">$480</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:25</span>
@@ -720,11 +741,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr5.jpg" title="" alt="" />
+									<img src="images/e5.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h5>
 									<span class="adprice">$859</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:24</span>
@@ -735,11 +756,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr6.jpg" title="" alt="" />
+									<img src="images/e6.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">But I must explain to you how all this mistaken idea of denouncing</h5>
 									<span class="adprice">$1299</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:22</span>
@@ -750,11 +771,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</h5>
 									<span class="adprice">$1099</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:21</span>
@@ -765,11 +786,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr7.jpg" title="" alt="" />
+									<img src="images/e7.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">On the other hand, we denounce with righteous dislike men</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:20</span>
@@ -780,11 +801,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr8.jpg" title="" alt="" />
+									<img src="images/e8.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$899</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:05</span>
@@ -795,11 +816,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr9.jpg" title="" alt="" />
+									<img src="images/e9.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et qua</h5>
 									<span class="adprice">$199</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:04</span>
@@ -810,11 +831,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr10.jpg" title="" alt="" />
+									<img src="images/e10.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$250</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -825,11 +846,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr11.jpg" title="" alt="" />
+									<img src="images/e11.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">who are so beguiled and demoralized by the charms of pleasure of the moment</h5>
 									<span class="adprice">$189</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -840,11 +861,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr12.jpg" title="" alt="" />
+									<img src="images/e12.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">you need to be sure there isn't anything embarrassing hidden</h5>
 									<span class="adprice">$1090</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -855,11 +876,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr13.jpg" title="" alt="" />
+									<img src="images/e13.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">looked up one of the more obscure Latin words</h5>
 									<span class="adprice">$599</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:02</span>
@@ -895,11 +916,11 @@ var elem=$('#container ul');
 							<ul class="list">
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:55</span>
@@ -910,11 +931,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr2.jpg" title="" alt="" />
+									<img src="images/e2.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">It is a long established fact that a reader</h5>
 									<span class="adprice">$310</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:45</span>
@@ -925,11 +946,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr3.jpg" title="" alt="" />
+									<img src="images/e3.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Contrary to popular belief, Lorem Ipsum is not</h5>
 									<span class="adprice">$190</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:30</span>
@@ -940,11 +961,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr4.jpg" title="" alt="" />
+									<img src="images/e4.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">The standard chunk of Lorem Ipsum used since the</h5>
 									<span class="adprice">$480</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:25</span>
@@ -955,11 +976,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr5.jpg" title="" alt="" />
+									<img src="images/e5.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h5>
 									<span class="adprice">$859</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:24</span>
@@ -970,11 +991,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr6.jpg" title="" alt="" />
+									<img src="images/e6.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">But I must explain to you how all this mistaken idea of denouncing</h5>
 									<span class="adprice">$1299</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:22</span>
@@ -985,11 +1006,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</h5>
 									<span class="adprice">$1099</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:21</span>
@@ -1000,11 +1021,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr7.jpg" title="" alt="" />
+									<img src="images/e7.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">On the other hand, we denounce with righteous dislike men</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:20</span>
@@ -1015,11 +1036,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr8.jpg" title="" alt="" />
+									<img src="images/e8.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$899</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:05</span>
@@ -1030,11 +1051,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr9.jpg" title="" alt="" />
+									<img src="images/e9.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et qua</h5>
 									<span class="adprice">$199</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:04</span>
@@ -1045,11 +1066,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr10.jpg" title="" alt="" />
+									<img src="images/e10.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$250</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1060,11 +1081,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr11.jpg" title="" alt="" />
+									<img src="images/e11.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">who are so beguiled and demoralized by the charms of pleasure of the moment</h5>
 									<span class="adprice">$189</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1075,11 +1096,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr12.jpg" title="" alt="" />
+									<img src="images/e12.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">you need to be sure there isn't anything embarrassing hidden</h5>
 									<span class="adprice">$1090</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1090,11 +1111,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr13.jpg" title="" alt="" />
+									<img src="images/e13.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">looked up one of the more obscure Latin words</h5>
 									<span class="adprice">$599</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:02</span>
@@ -1130,11 +1151,11 @@ var elem=$('#container ul');
 							<ul class="list">
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:55</span>
@@ -1145,11 +1166,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr2.jpg" title="" alt="" />
+									<img src="images/e2.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">It is a long established fact that a reader</h5>
 									<span class="adprice">$310</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:45</span>
@@ -1160,11 +1181,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr3.jpg" title="" alt="" />
+									<img src="images/e3.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Contrary to popular belief, Lorem Ipsum is not</h5>
 									<span class="adprice">$190</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:30</span>
@@ -1175,11 +1196,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr4.jpg" title="" alt="" />
+									<img src="images/e4.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">The standard chunk of Lorem Ipsum used since the</h5>
 									<span class="adprice">$480</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:25</span>
@@ -1190,11 +1211,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr5.jpg" title="" alt="" />
+									<img src="images/e5.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h5>
 									<span class="adprice">$859</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:24</span>
@@ -1205,11 +1226,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr6.jpg" title="" alt="" />
+									<img src="images/e6.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">But I must explain to you how all this mistaken idea of denouncing</h5>
 									<span class="adprice">$1299</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:22</span>
@@ -1220,11 +1241,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
+									<img src="images/e1.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</h5>
 									<span class="adprice">$1099</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:21</span>
@@ -1235,11 +1256,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr7.jpg" title="" alt="" />
+									<img src="images/e7.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">On the other hand, we denounce with righteous dislike men</h5>
 									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:20</span>
@@ -1250,11 +1271,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr8.jpg" title="" alt="" />
+									<img src="images/e8.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$899</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:05</span>
@@ -1265,11 +1286,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr9.jpg" title="" alt="" />
+									<img src="images/e9.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et qua</h5>
 									<span class="adprice">$199</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:04</span>
@@ -1280,11 +1301,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr10.jpg" title="" alt="" />
+									<img src="images/e10.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$250</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1295,11 +1316,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr11.jpg" title="" alt="" />
+									<img src="images/e11.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">who are so beguiled and demoralized by the charms of pleasure of the moment</h5>
 									<span class="adprice">$189</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1310,11 +1331,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr12.jpg" title="" alt="" />
+									<img src="images/e12.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">you need to be sure there isn't anything embarrassing hidden</h5>
 									<span class="adprice">$1090</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:03</span>
@@ -1325,11 +1346,11 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/fr13.jpg" title="" alt="" />
+									<img src="images/e13.jpg" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">looked up one of the more obscure Latin words</h5>
 									<span class="adprice">$599</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
+									<p class="catpath">Computers & Accessories » Laptops</p>
 									</section>
 									<section class="list-right">
 									<span class="date">Today, 17:02</span>
@@ -1363,10 +1384,9 @@ var elem=$('#container ul');
 			</div>
 		</div>
 	</div>
-	<!-- // Furnitures -->
+	<!-- // Electronic appliances -->
 	<!--footer section start-->
 		<footer>
-			<div class="footer-top">
 			<div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
