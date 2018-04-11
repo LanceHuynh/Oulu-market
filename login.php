@@ -17,21 +17,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Login :: w3layouts</title>
+	<title>Oulu Market</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	<meta name="keywords" content="Oulu Market" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
 	<!--fonts-->
 	<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!--//fonts-->	
+	<!--//fonts-->
 	<!-- js -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<!-- js -->
@@ -41,17 +40,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script>
 	  $(document).ready(function () {
 	    var mySelect = $('#first-disabled2');
-	
+
 	    $('#special').on('click', function () {
 	      mySelect.find('option:selected').prop('disabled', true);
 	      mySelect.selectpicker('refresh');
 	    });
-	
+
 	    $('#special2').on('click', function () {
 	      mySelect.find('option:disabled').prop('disabled', false);
 	      mySelect.selectpicker('refresh');
 	    });
-	
+
 	    $('#basic2').selectpicker({
 	      liveSearch: true,
 	      maxOptions: 1
@@ -201,10 +200,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="sign-up2 form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
 										<input type="password" name="password" placeholder="Your password" class="form-control" value="<?php echo $password; ?>"/>
 										<span class="help-block"><?php echo $password_err; ?></span>
-										
+
 								</div>
-								<div class="clearfix"></div>	
-							</div>	
+								<div class="clearfix"></div>
+							</div>
 							<div class="sub_home">
 								<div class="sub_home_left">
 									<input type="submit" value="Log in">
@@ -212,17 +211,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="sub_home_right">
 									<p>Go Back to <a href="index.php">Home</a></p>
 								</div>
-								
+
 								<div class="clearfix"> </div>
-							</div>	
+							</div>
 							<div class ="sub_home">
 								<p id="dont_have_account">Don't have an account? <a href="register.php">Sign up now</a>.</p>
 							</div>
-           				</div>		
+           				</div>
            			</div>
            		</div>
-		    </form> 
-							
+		    </form>
+
 		<!--footer section start-->
 		 <footer>
 			 <div class="footer-bottom text-center">
