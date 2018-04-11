@@ -3840,6 +3840,8 @@ label {
 		font-size: 47px;
 	}
 	a.account {
+		color: #fff;
+    	background-color: #01a185;
 		margin-top: 19px;
 		font-size: 14px;
 		padding: 5px 19px;
@@ -4104,11 +4106,11 @@ label {
 		margin-top: 10px;
 	}
 	a.account {
+		color: #fff;
+    	background-color: #01a185;
 		margin-top: 10px;
 		font-size: 15px;
-		padding: 0;
-		background: transparent;
-		color: #6D6D6D;
+		padding: 0 10px;
 	}
 	a.account:hover {
 		background: transparent;
@@ -4526,7 +4528,11 @@ label {
 }
 @media (max-width: 375px){
 	a.account {
+		color: #fff;
+    	background-color: #01a185;
 		font-size: 14px;
+		margin-right: 3px;
+		padding: 0 10px;
 	}
 	.header-right {
 		width: 100%;
@@ -4628,10 +4634,13 @@ label {
 		text-align: right;
 	}
 	a.account {
+		color: #fff;
+    	background-color: #01a185;
 		font-size: 14px;
-		text-align: right;
-		float: none;
+		float: right;
 		display: block;
+		width: 100px;
+		text-align: center;
 	}
 	span.active.uls-trigger, .btn-primary {
 		margin-top: 10px;
