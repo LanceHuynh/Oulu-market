@@ -99,7 +99,7 @@ var elem=$('#container ul');
   <div class="header">
     <div class="container">
       <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+        <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
       </div>
       <div class="header-right">
       <a class="account" href="login.php"><?php echo $welcome; ?></a>
@@ -986,7 +986,7 @@ var elem=$('#container ul');
 			<div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
-					<a href="index.html"><span>Oulu</span>Market</a>
+					<a href="index.php"><span>Oulu</span>Market</a>
 				</div>
 				<div class="copyrights">
 					<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>

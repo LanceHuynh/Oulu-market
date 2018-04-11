@@ -998,7 +998,7 @@ var elem=$('#container ul');
 			<div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
-					<a href="index.html"><span>Oulu</span>Market</a>
+					<a href="index.php"><span>Oulu</span>Market</a>
 				</div>
 				<div class="copyrights">
 					<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
