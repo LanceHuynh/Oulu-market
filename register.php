@@ -1,4 +1,12 @@
-﻿<!--
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $welcome =  "My Account";
+}else{
+	$welcome = "Login";
+}
+?>
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -7,21 +15,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Register :: w3layouts</title>
+	<title>Oulu Market</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	<meta name="keywords" content="Oulu Market" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
 	<!--fonts-->
 	<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<!--//fonts-->	
+	<!--//fonts-->
 	<!-- js -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<!-- js -->
@@ -59,17 +66,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery.uls.languagefilter.js"></script>
 	<script src="js/jquery.uls.regionfilter.js"></script>
 	<script src="js/jquery.uls.core.js"></script>
-	<script>
-		$( document ).ready( function() {
-			$( '.uls-trigger' ).uls( {
-				onSelect : function( language ) {
-					var languageName = $.uls.data.getAutonym( language );
-					$( '.uls-trigger' ).text( languageName );
-				},
-				quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-			} );
-		} );
-	</script>
 </head>
 <?php
 // Include config file
@@ -81,7 +77,7 @@ $username_err = $email_err = $password_err = $confirm_password_err = $registrati
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-	
+
 	// Validate email
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter a email.";
@@ -207,11 +203,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="header">
 	<div class="container">
 		<div class="logo">
-			<a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+			<a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
 		</div>
 		<div class="header-right">
-			<a class="account" href="login.php">My Account</a>
-			<a class="account" href="contact.html">Contact</a>
+			<a class="account" href="login.php"><?php echo $welcome; ?></a>
+			<a class="account" href="contact.php">Contact</a>
 		</div>
 	</div>
 </div>
@@ -270,7 +266,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<input type="submit" value="Create">
 							</div>
 							<div class="sub_home_right">
-								<p>Go Back to <a href="index.html">Home</a></p>
+								<p>Go Back to <a href="index.php">Home</a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -283,7 +279,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<div class="footer-bottom text-center">
 				<div class="container">
 					<div class="footer-logo">
-						<a href="index.html"><span>Oulu</span>Market</a>
+						<a href="index.php"><span>Oulu</span>Market</a>
 					</div>
 					<div class="copyrights">
 						<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>

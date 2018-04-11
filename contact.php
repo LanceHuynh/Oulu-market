@@ -1,4 +1,12 @@
-﻿<!--
+<?php
+	session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+	}else{
+	$welcome = "Login";
+	}
+?>
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -14,8 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<meta name="keywords" content="Oulu Market" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <!--fonts-->
@@ -59,17 +66,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.uls.languagefilter.js"></script>
 <script src="js/jquery.uls.regionfilter.js"></script>
 <script src="js/jquery.uls.core.js"></script>
-<script>
-			$( document ).ready( function() {
-				$( '.uls-trigger' ).uls( {
-					onSelect : function( language ) {
-						var languageName = $.uls.data.getAutonym( language );
-						$( '.uls-trigger' ).text( languageName );
-					},
-					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-				} );
-			} );
-		</script>
 		<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
     <script src="js/easyResponsiveTabs.js"></script>
 </head>
@@ -77,11 +73,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="header">
 		<div class="container">
 			<div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+        <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
 			</div>
 			<div class="header-right">
-			<a class="account" href="login.php">My Account</a>
-			<a class="account" href="contact.html">Contact</a>
+			<a class="account" href="login.php"><?php echo $welcome; ?></a>
+			<a class="account" href="contact.php">Contact</a>
 				<script>
 				$('#myModal').modal('');
 				</script>
@@ -118,22 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<label for="msg">Your Msg</label>
 							<span class="ss-icon">check</span>
 					  </div>
-
-
 			  </form>
-			<!--<div class="upload">
-						 <h3 class="tlt">Add Attachment:</h3>
-						<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-			<div id="drop">
-				<a>Choose file</a>
-				<input type="file" name="upl" multiple />
-			</div>
-
-      The file uploads will be shown here
-			<ul class="show">
-			</ul>
-
-		</form>-->
 		<div class="clear"></div>
 		<form class="submit">
 		<input class="button" type="submit" value="Send"/>
@@ -225,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
-					<a href="index.html"><span>Oulu</span>Market</a>
+					<a href="index.php"><span>Oulu</span>Market</a>
 				</div>
 				<div class="copyrights">
 					<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
