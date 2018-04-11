@@ -98,24 +98,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="mobile-app">
 				<div class="container">
-					<div class="col-md-5 app-left">
-						<a href="mobileapp.html"><img src="images/app.png" alt=""></a>
-					</div>
 					<div class="col-md-7 app-right">
 						<h3>Oulu Market is the <span>BEST</span> way for Selling and buying second-hand goods</h3>
             <p>We are OAMK students. This site was create for Software Development project 2<br>
             GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
-						<div class="app-buttons">
-							<div class="app-button">
-								<a href="#"><img src="images/1.png" alt=""></a>
-							</div>
-							<div class="app-button">
-								<a href="#"><img src="images/2.png" alt=""></a>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
 					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
