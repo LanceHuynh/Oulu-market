@@ -1,9 +1,11 @@
-<?php
+﻿<?php
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $welcome =  "My Account";
+	$pleaseLogin = "Item information";
 }else{
 	$welcome = "Login";
+	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
 }
 ?>
 <!--
@@ -74,8 +76,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 require_once 'database/connection.php';
 
 // Define variables and initialize with empty values
-$name = $description = $price = "";
-$name_err = $description_err = $price_err = "";
+$name = $description = $price = $category = "";
+$name_err = $description_err = $price_err = $category_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -85,43 +87,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $name_err = "Please enter a name for your product.";
     }else{
 		$name = trim($_POST["name"]);
+		echo($name);
 	}
 	if(empty(trim($_POST["description"]))){
         $description_err = "Please enter a short description for your product.";
     }else{
 		$description = trim($_POST["description"]);
+		echo($description);
 	}
-
 	if(empty(trim($_POST["price"]))){
         $price_err = "Please enter a price for your product.";
     }else {
 		$price = trim($_POST["price"]);
+		echo($price);
 	}
+	$category = $_POST['category'];
+	if ($category == "Select Category")
+	{
+		$category_err = "Please select category.";
+	}
+	
 
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($description_err) && empty($price_err)){
+    if(empty($name_err) && empty($description_err) && empty($price_err) && empty($category_err)){
 
         // Prepare an insert statement
         $sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssiiiib", $param_name, $param_description, $param_category, $param_price, $param_verified, $param_available, $param_added, $param_image);
+            mysqli_stmt_bind_param($stmt, "sssdiiib", $param_name, $param_description, $param_category, $param_price, $param_verified, $param_available, $param_added, $param_image);
 
             // Set parameters
             $param_name = $name;
 			$param_description = $description;
-			$param_category = 1;
+			$param_category = $category;
 			$param_price = $price;
 			$param_verified = 0;
 			$param_available = 1;
 			$param_added = $_SESSION['id'];
-			$param_image = "";
+			$param_image = "blob";
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                $registration_succ = "You have been registered. Please proceed to <a href=\"http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php\">login page.</a>";
+                //Succesfuly added
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -136,101 +145,134 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 <body>
-  <div class="header">
-    <div class="container">
-      <div class="logo">
-        <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
-      </div>
-      <div class="header-right">
-      <a class="account" href="login.php"><?php echo $welcome; ?></a>
-      <a class="account" href="contact.php">Contact</a>
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="index.php">
+					<img src="images/logo.png" alt="Logo" style="width:150px;height:150px;" />
+					<span>Oulu</span>Market
+				</a>
+			</div>
+			<div class="header-right">
+				<a class="account" href="login.php">
+					<?php echo $welcome; ?>
+				</a>
+				<a class="account" href="contact.php">Contact</a>
 				<script>
 				$('#myModal').modal('');
 				</script>
 			</div>
 		</div>
-		</div>
-	<div class="main-banner banner text-center">
-	  <div class="container">
-      <h1>The first bazaar<span class="segment-heading">    in Oulu</span> with delivery</h1>
-			<p>Software development project 2</p>
-	  </div>
 	</div>
-	<div class="submit-ad main-grid-border">
+	<div class="main-banner banner text-center">
 		<div class="container">
-			<h3><?php echo $not_loggedin; ?></h3>
-			<h2 class="head">Submit an item for selling.</h2>
-			<div class="post-ad-form">
-				<form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-					<label>Select Category <span>*</span></label>
-					<select class="category">
-						<option>Select Category</option>
-						<option>Mobiles</option>
-						<option>Electronics and Appliances</option>
-						<option>Furniture</option>
-						<option>Books, Sports and hobbies</option>
-						<option>Fashion</option>
-						<option>Kids</option>
-					</select>
-					<div class="clearfix"></div>
-					<label>Add product name<span>*</span></label>
-					<input type="text" class="phone" placeholder="" name="name">
-					<span class="help-block"><?php echo $name_err; ?></span>
-					<div class="clearfix"></div>
-					<label>Add Description <span>*</span></label>
-					<textarea class="mess" placeholder="Write few lines about your item" name="description"></textarea>
-					<span class="help-block"><?php echo $description_err; ?></span>
-					<div class="clearfix"></div>
-					<label>Enter product price<span>*</span></label>
-					<input type="text" class="phone" placeholder="" name="price">
-					<span class="help-block"><?php echo $price_err; ?></span>
-					<div class="clearfix"></div>
-				<div class="upload-ad-photos">
-				<label>Photo for your item :</label>
-					<div class="photos-upload-view">
-						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-
-						<div>
-							<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-							<div id="filedrag">or drop files here</div>
-						</div>
-
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div>
-
-						<div id="messages">
-						<p>Status Messages</p>
-						</div>
-						</div>
-					<div class="clearfix"></div>
-						<script src="js/filedrag.js"></script>
-				</div>
-					<div class="personal-details">
-						<div class="clearfix"></div>
-						<p class="post-terms">By clicking <strong>post Button</strong> you accept our Terms of Use and Privacy Policy</p>
-					<input type="submit" value="Post">
-					<div class="clearfix"></div>
-					</div>
-					</form>
-			</div>
+			<h1>
+				The first bazaar
+				<span class="segment-heading"> in Oulu</span> with delivery
+			</h1>
+			<p>Software development project 2</p>
 		</div>
 	</div>
 	<!-- // Submit Ad -->
-	<!--footer section start-->
-		<footer>
-			<div class="footer-bottom text-center">
-			<div class="container">
-				<div class="footer-logo">
-					<a href="index.php"><span>Oulu</span>Market</a>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+			<div id="page-wrapper" class="sign-in-wrapper">
+				<div class="graphs">
+					<div class="sign-up">
+						<h1><?php echo $pleaseLogin; ?></h1>
+						<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
+							<div class="sign-u">
+								<div class="sign-up1">
+									<h4>Item name* :</h4>
+								</div>
+								<div class="sign-up2 form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+									<input type="text" name="name" placeholder="Enter item name" class="form-control" value="<?php echo $name; ?>" />
+									<span class="help-block">
+										<?php echo $name_err; ?>
+									</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="sign-u">
+								<div class="sign-up1">
+									<h4>Description* :</h4>
+								</div>
+								<div class="sign-up2 form-group <?php echo (!empty($description_err)) ? 'has-error' : ''; ?>">
+									<input type="text" name="description" placeholder="Enter short description" class="form-control" value="<?php echo $description; ?>" />
+									<span class="help-block">
+										<?php echo $description_err; ?>
+									</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="sign-u">
+								<div class="sign-up1">
+									<h4>Price* :</h4>
+								</div>
+								<div class="sign-up2 form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
+									<input type="number" step="0.01" max="9999999999" name="price" placeholder="Enter short description" class="form-control" value="<?php echo $price; ?>" />
+									<span class="help-block"><?php echo $price_err; ?>
+									</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="sign-u">
+								<div class="sign-up1">
+									<h4>Select Category* :</h4>
+								</div>
+								<div class="sign-up2">
+									<select name="category" class="selectpicker show-tick <?php echo (!empty($category_err)) ? 'has-error' : ''; ?>">
+										<option>Select Category</option>
+										<option>Mobiles</option>
+										<option>Electronics and Appliances</option>
+										<option>Furniture</option>
+										<option>Books, Sports and hobbies</option>
+										<option>Fashion</option>
+										<option>Kids</option>
+									</select>
+									<span class="help-block" style="color:RGB(169, 68, 68)">
+										<?php echo $category_err; ?>
+									</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="sub_home">
+								<div class="sub_home_left">
+									<input type="submit" value="Add item" />
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						<?php } if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == false){ ?>
+						<div style="text-align: center; margin-top: 100px">
+							<div style="display: inline-block;">
+								<a class="account" style="float: none" href="login.php">Login</a>
+								<span>OR</span>
+								<a class="account" style="float: none" href="register.php">Register</a>
+							</div>
+						</div>
+						<?php } ?>
 				</div>
-				<div class="copyrights">
-					<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
-				</div>
-				<div class="clearfix"></div>
 			</div>
-		</div>
-		</footer>
-        <!--footer section end-->
+			<form>
+			<!-- // Submit Ad -->
+			<!--footer section start-->
+			<footer>
+				<div class="footer-bottom text-center">
+					<div class="container">
+						<div class="footer-logo">
+							<a href="index.php">
+								<span>Oulu</span>Market
+							</a>
+						</div>
+						<div class="copyrights">
+							<p>
+								© 2018 OuluMarket. All Rights Reserved | Design by
+								<a href="http://w3layouts.com/"> W3layouts</a>
+							</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</footer>
+			<!--footer section end-->
 </body>
 </html>
