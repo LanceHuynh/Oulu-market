@@ -22,8 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<meta name="keywords" content="Oulu Market" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <!--fonts-->
@@ -67,17 +66,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.uls.languagefilter.js"></script>
 <script src="js/jquery.uls.regionfilter.js"></script>
 <script src="js/jquery.uls.core.js"></script>
-<script>
-			$( document ).ready( function() {
-				$( '.uls-trigger' ).uls( {
-					onSelect : function( language ) {
-						var languageName = $.uls.data.getAutonym( language );
-						$( '.uls-trigger' ).text( languageName );
-					},
-					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-				} );
-			} );
-		</script>
 		<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
     <script src="js/easyResponsiveTabs.js"></script>
 </head>
