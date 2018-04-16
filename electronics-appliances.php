@@ -150,8 +150,8 @@ var elem=$('#container ul');
 				<div class="clearfix"></div>
 			</div>
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
-			  <li><a href="index.html">Home</a></li>
-			  <li><a href="categories.html">Categories</a></li>
+			  <li><a href="index.php">Home</a></li>
+			  <li><a href="buying.php">Categories</a></li>
 			  <li class="active">Electronics & Appliances</li>
 			</ol>
 			<div class="ads-grid">
@@ -192,59 +192,6 @@ var elem=$('#container ul');
 							</script>
 
 				</div>
-				<div class="brand-select">
-					<h3 class="sear-head">Category</h3>
-					  <select class="selectpicker" data-live-search="true">
-					  <option data-tokens="All">All</option>
-					  <option data-tokens="Computers">Computers</option>
-					  <option data-tokens="Hard Disk">Hard Disk</option>
-					  <option data-tokens="Internet">Internet</option>
-					  <option data-tokens="Laptops">Laptops</option>
-					  <option data-tokens="Monitors">Monitors</option>
-					  <option data-tokens="Printers">Printers</option>
-					  <option data-tokens="Other Accessories">Other Accessories</option>
-					</select>
-				</div>
-				<div class="featured-ads">
-					<h2 class="sear-head fer">Featured Ads</h2>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f1.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 450</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f2.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f3.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
 				</div>
 				<div class="ads-display col-md-9">
 					<div class="wrapper">
@@ -253,16 +200,6 @@ var elem=$('#container ul');
 						<li role="presentation" class="active">
 						  <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
 							<span class="text">All Ads</span>
-						  </a>
-						</li>
-						<li role="presentation" class="next">
-						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
-							<span class="text">Ads with Photos</span>
-						  </a>
-						</li>
-						<li role="presentation">
-						  <a href="#samsa" role="tab" id="samsa-tab" data-toggle="tab" aria-controls="samsa">
-							<span class="text">Company</span>
 						  </a>
 						</li>
 					  </ul>
@@ -286,218 +223,7 @@ var elem=$('#container ul');
 									   </div>
 									 </div>
 								<div class="clearfix"></div>
-							<ul class="list">
-								<a href="single.html">
-									<li>
-									<img src="images/e1.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
-									<span class="adprice">$290</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:55</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e2.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">It is a long established fact that a reader</h5>
-									<span class="adprice">$310</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:45</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e3.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">Contrary to popular belief, Lorem Ipsum is not</h5>
-									<span class="adprice">$190</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:30</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e4.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">The standard chunk of Lorem Ipsum used since the</h5>
-									<span class="adprice">$480</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:25</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e5.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h5>
-									<span class="adprice">$859</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:24</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e6.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">But I must explain to you how all this mistaken idea of denouncing</h5>
-									<span class="adprice">$1299</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:22</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e1.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</h5>
-									<span class="adprice">$1099</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:21</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e7.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">On the other hand, we denounce with righteous dislike men</h5>
-									<span class="adprice">$290</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:20</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e8.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
-									<span class="adprice">$899</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:05</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e9.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et qua</h5>
-									<span class="adprice">$199</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:04</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e10.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
-									<span class="adprice">$250</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:03</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e11.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">who are so beguiled and demoralized by the charms of pleasure of the moment</h5>
-									<span class="adprice">$189</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:03</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e12.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">you need to be sure there isn't anything embarrassing hidden</h5>
-									<span class="adprice">$1090</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:03</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
-								<a href="single.html">
-									<li>
-									<img src="images/e13.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">looked up one of the more obscure Latin words</h5>
-									<span class="adprice">$599</span>
-									<p class="catpath">Computers & Accessories » Laptops</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:02</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								<div class="clearfix"></div>
-								</a>
+							<ul class="list">								
 							</ul>
 						</div>
 							</div>

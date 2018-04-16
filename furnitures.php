@@ -121,7 +121,7 @@ $(document).ready(function () {
 		$("#home .list").append(html);
 	}
 });
-	
+
 </script>
 </head>
 <?php
@@ -192,7 +192,7 @@ echo "<script>var js_array =".$javascript." </script>";
 			</div>
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 			  <li><a href="index.php">Home</a></li>
-			  <li><a href="categories.php">Categories</a></li>
+			  <li><a href="buying.php">Categories</a></li>
 			  <li class="active">Furniture</li>
 			</ol>
 			<div class="ads-grid">
@@ -233,46 +233,6 @@ echo "<script>var js_array =".$javascript." </script>";
 							</script>
 
 				</div>
-				<div class="featured-ads">
-					<h2 class="sear-head fer">Featured Ads</h2>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f1.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 450</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f2.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="featured-ad">
-						<a href="single.html">
-							<div class="featured-ad-left">
-								<img src="images/f2.jpg" title="ad image" alt="" />
-							</div>
-							<div class="featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
 				</div>
 				<div class="ads-display col-md-9">
 					<div class="wrapper">
@@ -281,16 +241,6 @@ echo "<script>var js_array =".$javascript." </script>";
 						<li role="presentation" class="active">
 						  <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
 							<span class="text">All Ads</span>
-						  </a>
-						</li>
-						<li role="presentation" class="next">
-						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
-							<span class="text">Ads with Photos</span>
-						  </a>
-						</li>
-						<li role="presentation">
-						  <a href="#samsa" role="tab" id="samsa-tab" data-toggle="tab" aria-controls="samsa">
-							<span class="text">Company</span>
 						  </a>
 						</li>
 					  </ul>
@@ -316,9 +266,9 @@ echo "<script>var js_array =".$javascript." </script>";
 								<div class="clearfix"></div>
 							<ul class="list">
 								<a href="single.html">
-									
+
 								</a>
-								
+
 							</ul>
 						</div>
 							</div>
@@ -343,7 +293,6 @@ echo "<script>var js_array =".$javascript." </script>";
 									 </div>
 								<div class="clearfix"></div>
 							<ul class="list">
-								
 							</ul>
 						</div>
 							</div>
@@ -368,21 +317,6 @@ echo "<script>var js_array =".$javascript." </script>";
 									 </div>
 								<div class="clearfix"></div>
 							<ul class="list">
-								<a href="single.html">
-									<li>
-									<img src="images/fr1.jpg" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
-									<span class="adprice">$290</span>
-									<p class="catpath">Furniture » Sofa & Dining</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:55</span>
-									<span class="cityname">City name</span>
-									</section>
-									<div class="clearfix"></div>
-									</li>
-								</a>
 							</ul>
 						</div>
 							</div>
