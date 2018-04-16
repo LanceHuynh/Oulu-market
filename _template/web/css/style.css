@@ -2139,7 +2139,7 @@ form.submit {
 	position:relative;
 }
 .item-price:before {
-	    content: '';
+	display: hidden;
     position: absolute;
     z-index: 1;
     left: -50.5%;

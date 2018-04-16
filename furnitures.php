@@ -98,7 +98,7 @@ var elem=$('#container ul');
 });
 </script>
 <script id="template" type="text/x-handlebars-template">
-    <li id="item-list" data-id="{{id}}">
+    <li class="item-list" data-id="{{id}}">
         <img src="images/fr1.jpg" title="" alt="" />
 		<section class="list-left">
 		    <h5 class="title">{{item_name}}</h5>
@@ -120,6 +120,31 @@ $(document).ready(function () {
 		var html    = template(context);
 		$("#home .list").append(html);
 	}
+	$(".item-list").click(function(event) {
+		/* Act on the event */
+    	var id = $(this).attr('data-id');
+    	var object = {};
+    	object.id = id;
+    	var util = {};
+		util.post = function() {
+	    	var $form = $('<form>', {
+	        	action: 'single.php',
+	        	method: 'post'
+	    	});
+
+	    	$.each(object, function(key, val) {
+	    	 console.log(object);
+	         $('<input>').attr({
+	             type: "hidden",
+	             name: key,
+	             value: val
+	         }).appendTo($form);
+	    	});
+	    		$form.appendTo('body').submit();
+		};
+		util.post();
+
+	});
 });
 
 </script>

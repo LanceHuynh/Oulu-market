@@ -2157,7 +2157,7 @@ form.submit {
 	position:relative;
 }
 .item-price:before {
-	    content: '';
+	display: none;
     position: absolute;
     z-index: 1;
     left: -50.5%;

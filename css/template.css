@@ -1,4 +1,4 @@
-#item-list{
+.item-list{
 max-width: 100%;
 background-clip:
 border-box
@@ -101,7 +101,7 @@ rgba(0, 0, 0, 0)
 ;
 
 }
-#item-list img {
+.item-list img {
 	;
 border-bottom-color:
 rgb(209, 224, 238)
@@ -223,7 +223,7 @@ rgba(0, 0, 0, 0)
 
 }
 
-#item-list .list-left{
+.item-list .list-left{
 	box-sizing:
 border-box
 ;
@@ -274,7 +274,7 @@ rgba(0, 0, 0, 0)
 ;
 }
 
-#item-list .list-right{
+.item-list .list-right{
 	box-sizing:
 border-box
 ;
@@ -321,7 +321,7 @@ width:
 rgba(0, 0, 0, 0)
 ;
 }
-#item-list .adprice{ ;
+.item-list .adprice{ ;
 color:
 rgba(1, 161, 133, 0.57)
 ;
