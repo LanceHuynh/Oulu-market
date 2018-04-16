@@ -138,6 +138,7 @@ if ($_POST && !empty($_FILES)) {
 
 			if (mysqli_query($link, $sql)) {
 				echo("Image was uploaded");
+				header("location: welcome.php");
 			} else {
 				echo("Image was NOT uploaded");
 			}
