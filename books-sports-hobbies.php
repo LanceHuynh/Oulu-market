@@ -181,10 +181,10 @@ var elem=$('#container ul');
 										min: 0,
 										max: 9000,
 										values: [ 50, 6000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+										slide: function( event, ui ) {  $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
 										}
 							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+							$( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) + " - €" + $( "#slider-range" ).slider( "values", 1 ) );
 
 							});//]]>
 
@@ -222,7 +222,7 @@ var elem=$('#container ul');
 									   </div>
 									 </div>
 								<div class="clearfix"></div>
-							<ul class="list">								
+							<ul class="list">
 							</ul>
 						</div>
 							</div>
