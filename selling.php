@@ -72,77 +72,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/easyResponsiveTabs.js"></script>
 </head>
 <?php
-// Include config file
+/* Upload an image to mysql database.*/
+
+// Check for post data.
 require_once 'database/connection.php';
 
-// Define variables and initialize with empty values
-$name = $description = $price = $category = "";
-$name_err = $description_err = $price_err = $category_err = "";
+$name = $description = $price = $category = $image = "";
+$name_err = $description_err = $price_err = $category_err = $image_err = "";
 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-	// Validate email
-    if(empty(trim($_POST["name"]))){
-        $name_err = "Please enter a name for your product.";
-    }else{
+if ($_POST && !empty($_FILES)) {
+	$formOk = true;
+
+	if(empty(trim($_POST["name"]))){
+		$name_err = "Please enter a name for your product.";
+		$formOk = false;
+	}else{
 		$name = trim($_POST["name"]);
 	}
 	if(empty(trim($_POST["description"]))){
-        $description_err = "Please enter a short description for your product.";
-    }else{
+		$description_err = "Please enter a short description for your product.";
+		$formOk = false;
+	}else{
 		$description = trim($_POST["description"]);
 	}
 	if(empty(trim($_POST["price"]))){
-        $price_err = "Please enter a price for your product.";
-    }else {
+		$price_err = "Please enter a price for your product.";
+		$formOk = false;
+	}else {
 		$price = trim($_POST["price"]);
 	}
 	$category = $_POST['category'];
-	if ($category == "Select Category")
-	{
+	if ($category == "Select Category"){
 		$category_err = "Please select category.";
+		$formOk = false;
 	}
-	if (empty($_FILES))
-	{
-		$image_err = "Please upload image for your item.";
+
+	//Assign Variables
+	$path = $_FILES['image']['tmp_name'];
+	$ImgName = $_FILES['image']['name'];
+	$size = $_FILES['image']['size'];
+	$type = $_FILES['image']['type'];
+
+	if ($_FILES['image']['error'] || !is_uploaded_file($path)) {
+		$image_err = "Error in uploading file. Please try again.";
 	}
-	
-	
 
-    // Check input errors before inserting in database
-    if(empty($name_err) && empty($description_err) && empty($price_err) && empty($category_err)){
+	//check file extension
+	if ($formOk && !in_array($type, array('image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif'))) {
+		$image_err = "Unsupported file extension. Supported extensions are JPG / PNG.";
+	}
+	// check for file size.
+	if ($formOk && filesize($path) > 500000) {
+		$image_err = "File size must be less than 500 KB.";
+	}
 
-        // Prepare an insert statement
-        $sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	if ($formOk) {
+		// read file contents
+		$image = file_get_contents($path);
 
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssdiiib", $param_name, $param_description, $param_category, $param_price, $param_verified, $param_available, $param_added, $param_image);
+		if (empty($name_err) && empty($description_err) && empty($price_err) && empty($category_err) && empty($image_err)) {
 
-            // Set parameters
-            $param_name = $name;
-			$param_description = $description;
-			$param_category = $category;
-			$param_price = $price;
-			$param_verified = 0;
-			$param_available = 1;
-			$param_added = $_SESSION['id'];
-			$param_image = "blob";
+			$image = mysqli_real_escape_string($link, $image);
+			$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES ('{$name}', '{$description}', '{$category}', '{$price}', 0, '1', '{$_SESSION['id']}', '{$image}')";
+			//$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES ('red', 'descrition', 'tempc', '55', 0, '1', '1', '{$content}')";
 
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                //Succesfuly added
-            } else{
-                echo "Something went wrong. Please try again later.";
-            }
-        }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
-    }
-
-    // Close connection
-    mysqli_close($link);
+			if (mysqli_query($link, $sql)) {
+				echo("Image was uploaded");
+			} else {
+				echo("Image was NOT uploaded");
+			}
+			mysqli_close($link);
+		}
+	}
 }
 ?>
 <body>
@@ -175,7 +176,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 	</div>
 	<!-- // Submit Ad -->
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
@@ -244,7 +245,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Image* :</h4>
 								</div>
 								<div class="sign-up2 form-group <?php echo (!empty($image_err)) ? 'has-error' : ''; ?>">
-									<input type="file" id="fileselect" name="fileselect[]" style="margin-top:30px"/>
+									<input type="hidden" name="MAX_FILE_SIZE" value="500000">
+									<input type="file" name="image" style="margin-top:30px"/>
 									<span class="help-block">
 										<?php echo $image_err; ?>
 									</span>
@@ -268,7 +270,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						<?php } ?>
 				</div>
 			</div>
-			<form>
+			</form>
 			<!-- // Submit Ad -->
 			<!--footer section start-->
 			<footer>
