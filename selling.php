@@ -229,7 +229,7 @@ if ($_POST && !empty($_FILES)) {
 										<option>Select Category</option>
 										<option>Mobiles</option>
 										<option>Electronics and Appliances</option>
-										<option>Furniture</option>
+										<option>Furnitures</option>
 										<option>Books, Sports and hobbies</option>
 										<option>Fashion</option>
 										<option>Kids</option>
