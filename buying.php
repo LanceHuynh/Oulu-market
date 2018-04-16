@@ -116,8 +116,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="content">
 			<div class="categories">
 				<div class="container">
-					<form id=search_bar_container>
-						<input id="search_bar" type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
+					<form id=search_bar_container method="post" action="furnitures.php">
+						<input id="search_bar" name="input" type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
 						<input id="search_bar_button" type="submit" value=" ">
 					</form>
 					<div class="col-md-2 focus-grid">
