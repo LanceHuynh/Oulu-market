@@ -257,7 +257,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								</div>
 								<div class="clearfix"></div>
 							</div>
-						<?php } if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == false){ ?>
+						<?php } if(!isset($_SESSION['loggedin'])){ ?>
 						<div style="text-align: center; margin-top: 100px">
 							<div style="display: inline-block;">
 								<a class="account" style="float: none" href="login.php">Login</a>
