@@ -146,6 +146,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							}else{
 								// Display an error message if password is not valid
 								$password_err = 'The password you entered was not valid.';
+								
 							}
 						}
 					}else{
