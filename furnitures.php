@@ -144,7 +144,7 @@ echo "<script>var js_array =".$javascript." </script>";
       </div>
       <div class="header-right">
       <a class="account" href="login.php"><?php echo $welcome; ?></a>
-      <a class="account" href="contact.html">Contact</a>
+      <a class="account" href="contact.php">Contact</a>
         <script>
         $('#myModal').modal('');
         </script>
@@ -191,8 +191,8 @@ echo "<script>var js_array =".$javascript." </script>";
 				<div class="clearfix"></div>
 			</div>
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
-			  <li><a href="index.html">Home</a></li>
-			  <li><a href="categories.html">Categories</a></li>
+			  <li><a href="index.php">Home</a></li>
+			  <li><a href="categories.php">Categories</a></li>
 			  <li class="active">Furniture</li>
 			</ol>
 			<div class="ads-grid">
