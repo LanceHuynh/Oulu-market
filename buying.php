@@ -55,7 +55,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       liveSearch: true,
       maxOptions: 1
     });
-  });
+
+    $(".focus-layout").on('click', function(event) {
+    	event.preventDefault();
+    	/* Act on the event */
+    	var category = $(this).find("h4").text();
+    	var object = {};
+    	object.category = category;
+    	var util = {};
+		util.post = function() {
+	    	var $form = $('<form>', {
+	        	action: 'furnitures.php',
+	        	method: 'post'
+	    	});
+
+	    	$.each(object, function(key, val) {
+	    	 console.log(object);
+	         $('<input>').attr({
+	             type: "hidden",
+	             name: key,
+	             value: val
+	         }).appendTo($form);
+	    	});
+	    		$form.appendTo('body').submit();
+		};
+		util.post();
+
+    });
+  
+});
 </script>
 <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 <link href="css/jquery.uls.css" rel="stylesheet"/>

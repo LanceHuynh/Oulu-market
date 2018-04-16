@@ -133,7 +133,13 @@ $result= $link->query($query);
 for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 $javascript = json_encode($set);
 echo "<script>var js_array =".$javascript." </script>";
-};
+} elseif (isset($_POST["category"])){
+$query = "select * from items where category ='".$_POST["category"]."';";
+$result= $link->query($query);
+for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+$javascript = json_encode($set);
+echo "<script>var js_array =".$javascript." </script>";
+} 
 
 ?>
 <body>
