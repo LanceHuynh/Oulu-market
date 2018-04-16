@@ -81,7 +81,6 @@ $name_err = $description_err = $price_err = $category_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
 	// Validate email
     if(empty(trim($_POST["name"]))){
         $name_err = "Please enter a name for your product.";
@@ -103,6 +102,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	{
 		$category_err = "Please select category.";
 	}
+	if (empty($_FILES))
+	{
+		$image_err = "Please upload image for your item.";
+	}
+	
 	
 
     // Check input errors before inserting in database
@@ -206,7 +210,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Price* :</h4>
 								</div>
 								<div class="sign-up2 form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
-									<input type="number" step="0.01" max="9999999999" name="price" placeholder="Enter short description" class="form-control" value="<?php echo $price; ?>" />
+									<input type="number" step="0.01" max="9999999999" name="price" placeholder="Enter price" 
+										   class="form-control" value="<?php echo $price; ?>"
+										   oninvalid="setCustomValidity('Price must be less then 10 numbers and have only 2 decimals')"
+										   onchange="try{setCustomValidity('')}catch(e){}"/>
 									<span class="help-block"><?php echo $price_err; ?>
 									</span>
 								</div>
@@ -217,7 +224,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									<h4>Select Category* :</h4>
 								</div>
 								<div class="sign-up2">
-									<select name="category" class="selectpicker show-tick <?php echo (!empty($category_err)) ? 'has-error' : ''; ?>">
+									<select name="category" class="selectpicker show-tick custom">
 										<option>Select Category</option>
 										<option>Mobiles</option>
 										<option>Electronics and Appliances</option>
@@ -228,6 +235,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									</select>
 									<span class="help-block" style="color:RGB(169, 68, 68)">
 										<?php echo $category_err; ?>
+									</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="sign-u">
+								<div class="sign-up1">
+									<h4>Image* :</h4>
+								</div>
+								<div class="sign-up2 form-group <?php echo (!empty($image_err)) ? 'has-error' : ''; ?>">
+									<input type="file" id="fileselect" name="fileselect[]" style="margin-top:30px"/>
+									<span class="help-block">
+										<?php echo $image_err; ?>
 									</span>
 								</div>
 								<div class="clearfix"></div>
