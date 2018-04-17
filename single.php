@@ -15,7 +15,7 @@ $set = $result->fetch_assoc();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Resale a Business Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
+<title>Product Information</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-select.css">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -36,26 +36,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-select.js"></script>
-<script>
-  $(document).ready(function () {
-    var mySelect = $('#first-disabled2');
-
-    $('#special').on('click', function () {
-      mySelect.find('option:selected').prop('disabled', true);
-      mySelect.selectpicker('refresh');
-    });
-
-    $('#special2').on('click', function () {
-      mySelect.find('option:disabled').prop('disabled', false);
-      mySelect.selectpicker('refresh');
-    });
-
-    $('#basic2').selectpicker({
-      liveSearch: true,
-      maxOptions: 1
-    });
-  });
-</script>
 <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 <link href="css/jquery.uls.css" rel="stylesheet"/>
 <link href="css/jquery.uls.grid.css" rel="stylesheet"/>
@@ -67,34 +47,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.uls.languagefilter.js"></script>
 <script src="js/jquery.uls.regionfilter.js"></script>
 <script src="js/jquery.uls.core.js"></script>
-<script>
-			$( document ).ready( function() {
-				$( '.uls-trigger' ).uls( {
-					onSelect : function( language ) {
-						var languageName = $.uls.data.getAutonym( language );
-						$( '.uls-trigger' ).text( languageName );
-					},
-					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-				} );
-			} );
-		</script>
-		<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+<link rel="stylesheet" href="css/flexslider.css" media="screen" />
 </head>
 <body>
 <div class="header">
 		<div class="container">
 			<div class="logo">
-				<a href="index.html"><span>Re</span>sale</a>
+				<a href="index.php"><span>Oulu</span>Market</a>
 			</div>
 			<div class="header-right">
-			<a class="account" href="login.html">My Account</a>
+			<a class="account" href="login.php">My Account</a>
 	<!-- Large modal -->
 		</div>
 	</div>
 	<div class="banner text-center">
 	  <div class="container">    
-			<h1>Sell or Advertise   <span class="segment-heading">    anything online </span> with Resale</h1>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+			<h1>The first bazaar   <span class="segment-heading">    in Oulu </span> with delivery</h1>
+			<p>Software Development Project 2</p>
 			<a href="post-ad.html">Post Free Ad</a>
 	  </div>
 	</div>
@@ -168,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-bottom text-center">
 			<div class="container">
 				<div class="footer-logo">
-					<a href="index.html"><span>Re</span>sale</a>
+					<a href="index.html"><span>Oulu</span>Market</a>
 				</div>
 				<div class="footer-social-icons">
 					<ul>
@@ -180,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="copyrights">
-					<p> © 2016 Resale. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+					<p> © 2018 Oulu Market. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
