@@ -11,7 +11,7 @@
         echo"<script>alert('15 Minutes over!');</script>";
         unset($_SESSION['login'], $_SESSION['password'], $_SESSION['timestamp']);
         $_SESSION['loggedin'] = false;
-        header("Location: " . index.php); //redirect to index.php
+        header("location: index.php"); //redirect to index.php
         exit;
     } else {
         $_SESSION['timestamp'] = time(); //set new timestamp
