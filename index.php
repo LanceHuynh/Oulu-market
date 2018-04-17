@@ -4,8 +4,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 		$welcome =  "My Account";
 		
 		if(time()>$_SESSION['expire']){
-			$welcome = "Login";
 			session_destroy();
+			$welcome = "Login";
 		}
 }else{
 	$welcome = "Login";
