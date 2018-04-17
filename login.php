@@ -7,6 +7,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 else{
 	$welcome = "Login";
 }
+
+if(time() - $_SESSION['timestamp'] > 600) { //subtract new timestamp from the old one
+	echo"<script>alert('15 Minutes over!');</script>";
+	unset($_SESSION['login'], $_SESSION['password'], $_SESSION['timestamp']);
+	$_SESSION['loggedin'] = false;
+	header("location: index.php"); //redirect to index.php
+	exit;
+} else {
+	$_SESSION['timestamp'] = time(); //set new timestamp
+}
 ?>
 <!--
 Author: W3layouts

@@ -7,7 +7,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 require_once 'database/connection.php';
 
-echo $_POST["id"];
+$id = $_POST["id"];
+echo $id;
 $query = "select * from items where id ='".$_POST["id"]."';";
 $result= $link->query($query);
 $set = $result->fetch_assoc();
@@ -77,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="images/ss1.jpg">
-								<img src="images/ss1.jpg" />
+								<img src="http://www.students.oamk.fi/~t6dang00/Oulu-market/get_image.php?id=<?php echo $id;?>" />
 							</li>
 							<li data-thumb="images/ss2.jpg">
 								<img src="images/ss2.jpg" />
