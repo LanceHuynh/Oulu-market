@@ -14,7 +14,7 @@
 
 	$_SESSION['start'] = time();
 ?>
-Author: W3layouts
+<--Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
@@ -106,7 +106,7 @@ var elem=$('#container ul');
 </script>
 <script id="template" type="text/x-handlebars-template">
     <li class="item-list" data-id="{{id}}">
-        <img src="images/fr1.jpg" title="" alt="" />
+        <img src="'data:image/png;base64,'.base64_encode($blob).''"/>
 		<section class="list-left">
 		    <h5 class="title">{{item_name}}</h5>
 		    <span class="adprice">{{price}}</span>
@@ -160,7 +160,7 @@ $(document).ready(function () {
 require_once 'database/connection.php';
 
 if (isset($_POST["input"])){
-$query = "select * from items where item_name ='".$_POST["input"]."';";
+$query = "select * from items where item_name  LIKE '%".$_POST['input']."%'";
 $result= $link->query($query);
 for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 $javascript = json_encode($set);
