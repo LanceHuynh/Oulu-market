@@ -1,19 +1,21 @@
 ﻿<?php
-	session_start();
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-		$welcome =  "My Account";
-		$pleaseLogin = "You are about to order item below";
-		if(time()>$_SESSION['start']+900){
-			session_unset();
-			session_destroy();
-			$welcome = "Login";
-		}
-	}else{
-		$welcome = "Login";
-		$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
-	}
+session_start();
+$_SESSION['start'] = time();
 
-	$_SESSION['start'] = time();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+	$pleaseLogin = "You are about to order item below";
+	if(time()>$_SESSION['start']+900){
+		session_unset();
+		session_destroy();
+		$welcome = "Login";
+	}
+}else{
+	$welcome = "Login";
+	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
+}
+
+	
 // Include config file
 require_once 'database/connection.php';
 
@@ -131,6 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="js/jquery.uls.languagefilter.js"></script>
 	<script src="js/jquery.uls.regionfilter.js"></script>
 	<script src="js/jquery.uls.core.js"></script>
+	<link rel="stylesheet" href="css/flexslider.css" media="screen" />
 </head>
 <body>
 	<div class="header">
@@ -158,7 +161,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<?php echo $pleaseLogin; ?>
 						</h1>
 						<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-						<div class="item-price">
+						<div class="item-price" width="80%">
+							<div class="product-name">
+								<p class="p-price">Name</p>
+								<h3 class="rate">
+									<?php echo $set['item_name']?>
+								</h3>
+								<div class="clearfix"></div>
+							</div>
 							<div class="product-price">
 								<p class="p-price">Price</p>
 								<h3 class="rate">
@@ -166,18 +176,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</h3>
 								<div class="clearfix"></div>
 							</div>
-							<div class="condition">
-								<p class="p-price">Condition</p>
-								<h4>Good</h4>
-								<div class="clearfix"></div>
-							</div>
-							<div class="itemtype">
-								<p class="p-price">Item type</p>
-								<h4>
-									<?php echo $set["category"]?>
-								</h4>
-								<div class="clearfix"></div>
-							</div>
+							
+							<img src="images/ss1.jpg" style="width:100%; height:40%; margin-bottom:3%;">
+							
 						</div>
 						<div class="sign-u">
 							<div class="sign-up1">

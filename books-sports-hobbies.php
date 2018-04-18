@@ -1,9 +1,11 @@
 <?php
 	session_start();
+	$_SESSION['start'] = time();
+
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 
-	if(time()>$_SESSION['start'] + 900){
+	if(time()>$_SESSION['start']+900){
 		session_unset();
 		session_destroy();
 		$welcome = "Login";
@@ -11,8 +13,6 @@
 	}else{
 	$welcome = "Login";
 	}
-
-	$_SESSION['start'] = time();
 ?>
 <!--
 Author: W3layouts
