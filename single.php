@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="images/ss1.jpg">
-								<img src="http://www.students.oamk.fi/~t6dang00/Oulu-market/get_image.php?id=<?php echo $id;?>" />
+								<img src="images/ss1.jpg" />
 							</li>
 							<li data-thumb="images/ss2.jpg">
 								<img src="images/ss2.jpg" />
