@@ -281,7 +281,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					</div>
 				</div>
 			</div>
-		<form>
+		</form>
 		<!--footer section start-->
 		<footer>
 			<div class="footer-bottom text-center">
