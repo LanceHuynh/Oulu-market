@@ -19,9 +19,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	}
 
 	$_SESSION['start'] = time();
-?>
-
-<?php
 	require_once 'database/connection.php';
 	require_once 'get_image.php';
 
@@ -68,22 +65,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="css/flexslider.css" media="screen" />
 </head>
 <body>
-<div class="header">
+	<div class="header">
 		<div class="container">
 			<div class="logo">
-				<a href="index.php"><span>Oulu</span>Market</a>
+				<a href="index.php">
+					<img src="images/logo.png" alt="Logo" style="width:150px;height:150px;" />
+					<span>Oulu</span>Market
+				</a>
 			</div>
 			<div class="header-right">
-			<a class="account" href="login.php">My Account</a>
-	<!-- Large modal -->
+				<a class="account" href="login.php"><?php echo $welcome; ?>
+				</a>
+				<a class="account" href="contact.php">Contact</a>
+			</div>
 		</div>
-	</div>
-	<div class="banner text-center">
-	  <div class="container">    
-			<h1>The first bazaar   <span class="segment-heading">    in Oulu </span> with delivery</h1>
-			<p>Software Development Project 2</p>
-			<a href="post-ad.html">Post Free Ad</a>
-	  </div>
 	</div>
 	<!--single-page-->
 	<div class="single-page main-grid-border">
