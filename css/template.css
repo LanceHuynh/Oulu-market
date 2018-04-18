@@ -60,8 +60,7 @@ line-height:
 list-style-type:
 none
 ;
-margin-bottom:
-30px
+margin: 0 auto 30px auto;
 ;
 padding-bottom:
 20px
@@ -179,7 +178,7 @@ font-weight:
 400
 ;
 height:
-2px
+auto
 ;
 line-height:
 20px

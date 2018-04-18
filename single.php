@@ -95,19 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<p>
 							Added at <?php echo $set['added_at']?>
 						</p>
-						<div class="flexslider">
-							<ul class="slides">
-								<li data-thumb="images/ss1.jpg">
-									<img src="images/ss1.jpg" />
-								</li>
-								<li data-thumb="images/ss2.jpg">
-									<img src="images/ss2.jpg" />
-								</li>
-								<li data-thumb="images/ss3.jpg">
-									<img src="images/ss3.jpg" />
-								</li>
-							</ul>
-						</div>
+						<img src="<?php echo $set['image_path']?>">
 						<!-- FlexSlider -->
 						<script defer src="js/jquery.flexslider.js"></script>
 						<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />

@@ -14,7 +14,7 @@
 
 	$_SESSION['start'] = time();
 ?>
-<--Author: W3layouts
+<!--Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
@@ -106,7 +106,7 @@ var elem=$('#container ul');
 </script>
 <script id="template" type="text/x-handlebars-template">
     <li class="item-list" data-id="{{id}}">
-        <img src="'data:image/png;base64,'.base64_encode($blob).''"/>
+        <img src="{{image_path}}" alt="">
 		<section class="list-left">
 		    <h5 class="title">{{item_name}}</h5>
 		    <span class="adprice">{{price}}</span>
