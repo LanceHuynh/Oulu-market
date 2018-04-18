@@ -57,7 +57,7 @@
                 </section>
                 <section class="list-right">
                     <span class="date">{{added_at}}</span>
-                    <a href="order_delivery.php" class="btn btn-danger btn-md" role="button">Order Shippings</a>
+                    <a href="order_shipping.php" class="btn btn-danger btn-md" role="button">Order Shippings</a>
                 </section>
 
                 <div class="clearfix"></div>
@@ -74,6 +74,32 @@
                     var html    = template(context);
                     $("#sell").append(html);
                 }
+
+                $(".list-right a").on('click', function(event) {
+                    event.preventDefault();
+                    /* Act on the event */
+                    var id = $(this).parent().parent().attr('data-id');
+                    var object = {};
+                    object['id'] = id;
+                    var util = {};
+                    util.post = function() {
+                        var $form = $('<form>', {
+                            action: 'order_shipping.php',
+                            method: 'post'
+                        });
+
+                        $.each(object, function(key, val) {
+                         console.log(object);
+                         $('<input>').attr({
+                             type: "hidden",
+                             name: key,
+                             value: val
+                         }).appendTo($form);
+                        });
+                            $form.appendTo('body').submit();
+                    };
+                    util.post();
+                });
             });
             
         </script>

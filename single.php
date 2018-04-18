@@ -63,6 +63,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery.uls.regionfilter.js"></script>
 	<script src="js/jquery.uls.core.js"></script>
 	<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+
+		});
+	</script>
 </head>
 <body>
 	<div class="header">
@@ -148,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"></div>
 					<br>
-					<a href="order_delivery.php" class="btn btn-warning btn-md" role="button">Order Delivery</a>
+					<href="#" id="buy-button" class="btn btn-warning btn-md" role="button">Buy</a>
 				</div>
 			</div>
 		</div>
