@@ -3,7 +3,7 @@
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 		$welcome =  "My Account";
 		$pleaseLogin = "You are about to order item below";
-		if(time()>$_SESSION['expire']){
+		if(time()>$_SESSION['start']+900){
 			session_unset();
 			session_destroy();
 			$welcome = "Login";
@@ -12,6 +12,8 @@
 		$welcome = "Login";
 		$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
 	}
+
+	$_SESSION['start'] = time();
 // Include config file
 require_once 'database/connection.php';
 
