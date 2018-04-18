@@ -10,7 +10,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 	$pleaseLogin = "Item information";
 
-	if(time()>$_SESSION['expire']){
+	if(time()>$_SESSION['start']+900){
 		session_unset();
 		session_destroy();
 		$welcome = "Login";
@@ -23,8 +23,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 $_SESSION['start'] = time();
 require_once 'database/connection.php';
 
-$id = $_POST["id"];
-echo $id;
 $query = "select * from items where id ='".$_POST["id"]."';";
 $result= $link->query($query);
 $set = $result->fetch_assoc();
