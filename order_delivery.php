@@ -3,7 +3,7 @@
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 		$welcome =  "My Account";
 		$pleaseLogin = "You are about to order item below";
-		if(time()>$_SESSION['expire']){
+		if(time()>$_SESSION['start']+900){
 			session_unset();
 			session_destroy();
 			$welcome = "Login";
@@ -12,8 +12,14 @@
 		$welcome = "Login";
 		$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
 	}
+
+	$_SESSION['start'] = time();
 // Include config file
 require_once 'database/connection.php';
+
+$query = "select * from items where id ='".$_POST["id"]."';";
+$result= $link->query($query);
+$set = $result->fetch_assoc();
 
 //Declare variables
 $name = $address = $number = "";
@@ -152,6 +158,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<?php echo $pleaseLogin; ?>
 						</h1>
 						<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
+						<div class="item-price">
+							<div class="product-price">
+								<p class="p-price">Price</p>
+								<h3 class="rate">
+									<?php echo $set['price']?>
+								</h3>
+								<div class="clearfix"></div>
+							</div>
+							<div class="condition">
+								<p class="p-price">Condition</p>
+								<h4>Good</h4>
+								<div class="clearfix"></div>
+							</div>
+							<div class="itemtype">
+								<p class="p-price">Item type</p>
+								<h4>
+									<?php echo $set["category"]?>
+								</h4>
+								<div class="clearfix"></div>
+							</div>
+						</div>
 						<div class="sign-u">
 							<div class="sign-up1">
 								<h4>Your name* :</h4>

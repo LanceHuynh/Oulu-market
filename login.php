@@ -142,8 +142,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								$_SESSION['loggedin'] = true;
 								$_SESSION['login'] = $login;
 								$_SESSION['id'] = $id;
-								$_SESSION['start'] = time();
-								$_SESSION['expire'] = $_SESSION['start'] + 900; //session expires after 15 minutes
 								header("location: index.php");
 							}else{
 								// Display an error message if password is not valid

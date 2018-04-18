@@ -1,17 +1,16 @@
-<?php
+﻿<?php
 	session_start();
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-		$welcome =  "My Account";
-		$pleaseLogin = "Item information";
-		
-		if(time()>$_SESSION['expire']){
-			session_unset();
-			session_destroy();
-			$welcome = "Login";
-			}
-	}else{
+	$welcome =  "My Account";
+	$pleaseLogin = "Item information";
+	if(time()>$_SESSION['start']+900){
+		session_unset();
+		session_destroy();
 		$welcome = "Login";
-		$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
+		}
+	}else{
+	$welcome = "Login";
+	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
 	}
 
 	$_SESSION['start'] = time();
@@ -133,16 +132,26 @@ if ($_POST && !empty($_FILES)) {
 	if ($formOk && filesize($path) > 500000) {
 		$image_err = "File size must be less than 500 KB.";
 	}
+	if (file_exists($target_file))
+	{
+		$image_err = "File with same name already exists.";
+	}
+	
 
 	if ($formOk) {
 		// read file contents
 		$image = file_get_contents($path);
 
+		$target_dir = "images/";
+		$target_file = $target_dir . basename($_FILES["image"]["name"]);
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+		move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
 		if (empty($name_err) && empty($description_err) && empty($price_err) && empty($category_err) && empty($image_err)) {
 
 			$image = mysqli_real_escape_string($link, $image);
-			$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES ('{$name}', '{$description}', '{$category}', '{$price}', 0, '1', '{$_SESSION['id']}', '{$image}')";
-			//$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image) VALUES ('red', 'descrition', 'tempc', '55', 0, '1', '1', '{$content}')";
+			$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image_path) VALUES ('{$name}', '{$description}', '{$category}', '{$price}', 0, '1', '{$_SESSION['id']}', '{$target_file}')";
 
 			if (mysqli_query($link, $sql)) {
 				echo("Image was uploaded");

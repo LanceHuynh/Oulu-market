@@ -3,7 +3,7 @@
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 
-	if(time()>$_SESSION['expire']){
+	if(time()>$_SESSION['start'] + 900){
 		session_unset();
 		session_destroy();
 		$welcome = "Login";
