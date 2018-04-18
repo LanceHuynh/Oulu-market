@@ -30,6 +30,7 @@ $set = $result->fetch_assoc();
 <html>
 <head>
 	<title>Product Information</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/bootstrap-select.css" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
