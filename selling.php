@@ -5,6 +5,7 @@
 		$pleaseLogin = "Item information";
 		
 		if(time()>$_SESSION['expire']){
+			session_unset();
 			session_destroy();
 			$welcome = "Login";
 			}

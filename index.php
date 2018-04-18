@@ -4,6 +4,7 @@
 	$welcome =  "My Account";
 
 	if(time()>$_SESSION['expire']){
+		session_unset();
 		session_destroy();
 		$welcome = "Login";
 		}
@@ -14,7 +15,6 @@
 	$_SESSION['start'] = time();
 ?>
 
-?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com

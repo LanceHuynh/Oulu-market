@@ -10,6 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	$welcome =  "My Account";
 
 	if(time()>$_SESSION['expire']){
+		session_unset();
 		session_destroy();
 		$welcome = "Login";
 		}
