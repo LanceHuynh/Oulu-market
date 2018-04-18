@@ -1,10 +1,17 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    $welcome =  "My Account";
-}else{
+	session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
+
+	if(time()>$_SESSION['expire']){
+		session_destroy();
+		$welcome = "Login";
+		}
+	}else{
 	$welcome = "Login";
-}
+	}
+
+	$_SESSION['start'] = time();
 ?>
 <!--
 Author: W3layouts

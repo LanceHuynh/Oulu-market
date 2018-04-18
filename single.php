@@ -5,13 +5,29 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-require_once 'database/connection.php';
+	session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	$welcome =  "My Account";
 
-$id = $_POST["id"];
-echo $id;
-$query = "select * from items where id ='".$_POST["id"]."';";
-$result= $link->query($query);
-$set = $result->fetch_assoc();
+	if(time()>$_SESSION['expire']){
+		session_destroy();
+		$welcome = "Login";
+		}
+	}else{
+	$welcome = "Login";
+	}
+
+	$_SESSION['start'] = time();
+?>
+
+<?php
+	require_once 'database/connection.php';
+	require_once 'get_image.php';
+
+	echo $_POST["id"];
+	$query = "select * from items where id ='".$_POST["id"]."';";
+	$result= $link->query($query);
+	$set = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p> Added at <?php echo $set['added_at']?></p>
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/ss1.jpg">
+							<li data-thumb="http://www.students.oamk.fi">
 								<img src="images/ss1.jpg" />
 							</li>
 							<li data-thumb="images/ss2.jpg">
