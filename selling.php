@@ -1,8 +1,11 @@
 ﻿<?php
 	session_start();
+	$_SESSION['start'] = time();
+
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 	$pleaseLogin = "Item information";
+		
 	if(time()>$_SESSION['start']+900){
 		session_unset();
 		session_destroy();
@@ -12,8 +15,6 @@
 	$welcome = "Login";
 	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
 	}
-
-	$_SESSION['start'] = time();
 ?>
 <!--
 Author: W3layouts

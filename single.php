@@ -6,21 +6,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-	$pleaseLogin = "Item information";
+$_SESSION['start'] = time();
 
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+$welcome =  "My Account";
+
+if(time()>$_SESSION['start']+900){
+	session_unset();
+	session_destroy();
+	$welcome = "Login";
 	}
 }else{
-	$welcome = "Login";
-	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
+$welcome = "Login";
 }
 
-$_SESSION['start'] = time();
 require_once 'database/connection.php';
 
 $query = "select * from items where id ='".$_POST["id"]."';";
@@ -147,6 +146,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="clearfix"></div>
+					<br>
+					<a href="order_delivery.php" class="btn btn-warning btn-md" role="button">Order Delivery</a>
 				</div>
 			</div>
 		</div>

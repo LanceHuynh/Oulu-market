@@ -1,5 +1,7 @@
 ﻿<?php
 	session_start();
+	$_SESSION['start'] = time();
+
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 
@@ -11,8 +13,6 @@
 	}else{
 	$welcome = "Login";
 	}
-
-	$_SESSION['start'] = time();
 ?>
 <!--Author: W3layouts
 Author URL: http://w3layouts.com
