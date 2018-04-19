@@ -56,6 +56,7 @@
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
                 <link href="css/template.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/welcome.css">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script src="js/handlebars-v4.0.11.js"></script>
 
@@ -109,14 +110,14 @@
                 var source   = document.getElementById("template").innerHTML;
                 var template = Handlebars.compile(source);
                 for (var i = 0; i < js_array.length; i++)
-                {       
-                    if (js_array[i].verified == "0") 
+                {
+                    if (js_array[i].verified == "0")
                     {
                         js_array[i].verified = "Not verified";
                     } else {
                         js_array[i].verified = "Verified";
                     }
-                    if (js_array[i].available == "0") 
+                    if (js_array[i].available == "0")
                     {
                         js_array[i].available = "Bought";
                     } else {
@@ -132,7 +133,7 @@
                 for (var i = 0; i < js_array1.length; i++)
                 {
                     if (js_array1[i].address == "" ) {
-                       js_array1[i].address = "To be picked up at the warehouse"; 
+                       js_array1[i].address = "To be picked up at the warehouse";
                     } else {
                         js_array1[i].address = "To be delivered at given address";
                     }
@@ -196,7 +197,7 @@
 
                  $(".verify").each(function(index, el) {
                         console.log($(this).text());
-                        if ($(this).text() == "Verified") 
+                        if ($(this).text() == "Verified")
                         {
                             $(this).toggleClass('verified');
                         } else {
@@ -211,20 +212,32 @@
                      }
                  });
             });
-            
+
         </script>
 
     </head>
 
     <body>
 
+      <div class="header">
+        <div class="container">
+          <div class="logo">
+            <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
+          </div>
+          <div class="header-right">
+            <p><a href="logout.php" class="account" style="background-color:red;">Sign Out of Your Account</a></p>
+            <script>
+            $('#myModal').modal('');
+            </script>
+          </div>
+        </div>
+      </div>
+
         <div class="page-header">
 
             <h4>Hi, <b><?php echo htmlspecialchars($_SESSION['login']); ?></b>. Welcome to Oulu Market.<h4>
 
         </div>
-
-        <p><a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a></p>
 
         <div class="container">
             <h4 style="text-align: left">Bought Item</h4>
@@ -234,11 +247,10 @@
         <div class="container">
             <h4 style="text-align: left">Your Listed Item</h4>
             <div id="sell" class="item-container">
-                
+
             </div>
         </div>
 
     </body>
 
     </html>
-
