@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	session_start();
 	$_SESSION['start'] = time();
 
@@ -161,7 +161,6 @@ if ($_POST && !empty($_FILES)) {
 			} else {
 				echo("Image was NOT uploaded");
 			}
-			mysqli_close($link);
 		}
 	}
 }
