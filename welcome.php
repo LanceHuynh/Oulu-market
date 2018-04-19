@@ -14,7 +14,7 @@
         $result= $link->query($query);
         ;
     } elseif (isset($_POST['shipping'])) {
-        $query = "UPDATE items SET available = 0 WHERE id =".$_POST['id'].";";;
+        $query = "INSERT INTO shipping (item_id, owner_id, buyers_name, address, ordered_at, contact_num, status) VALUES (".$_POST['id'].",".$_SESSION['id'].",".$_POST['name'].",".$_POST['address'].",CURRENT_TIMESTAMP,0,0);";
         $result= $link->query($query);
     }
 
