@@ -13,6 +13,15 @@
 	}else{
 	$welcome = "Login";
 	}
+
+	require_once 'database/connection.php';
+
+	if(isset($_POST['buy'])){
+		$query="INSERT INTO delivery (item_id, bought_by, name, address, contact_num, status) VALUES (".$_POST['id'].",".$_SESSION['id'].",'','',0,0);";
+		$link->query($query);
+		$query="UPDATE items SET available = 0 WHERE id =".$_POST['id'].";";
+		$link->query($query);
+	}
 ?>
 <!--
 Author: W3layouts

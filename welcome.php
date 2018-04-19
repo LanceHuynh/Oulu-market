@@ -15,6 +15,21 @@
     $javascript = json_encode($set);
     echo "<script>var js_array =".$javascript." </script>";
 
+    $query = "SELECT user.id as 'User ID', items.id, added_by, item_name, description, image_path, price, category,address , ordered_at, available, added_at from (items inner join delivery on  items.id = delivery.item_id) inner join user on delivery.bought_by = user.id where user.id = ".$_SESSION['id'].";";
+    $result= $link->query($query);
+    for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+    $javascript = json_encode($set);
+    echo "<script>var js_array1 =".$javascript." </script>";
+
+    if (isset($_POST['delivery'])) {
+        $query = "UPDATE delivery SET name ='".$_POST['name']."', address ='".$_POST['address']."', contact_num =".$_POST['number'].", ordered_at = CURRENT_TIMESTAMP WHERE item_id = ".$_POST['id'].";";
+        $result= $link->query($query);
+        ;
+    } elseif (isset($_POST['shipping'])) {
+        $query = "UPDATE items SET available = 0 WHERE id =".$_POST['id'].";";;
+        $result= $link->query($query);
+    }
+
 ?>
 
 
@@ -57,7 +72,29 @@
                 </section>
                 <section class="list-right">
                     <span class="date">{{added_at}}</span>
-                    <a href="order_shipping.php" class="btn btn-danger btn-md" role="button">Order Shippings</a>
+                    <br>
+                     <span class="verify">{{verified}}</span>
+                     <br>
+                     <span class="available verified">{{available}}</span>
+                    <a href="order_shipping.php" class="btn btn-danger btn-md shipping" role="button">Order Shipping</a>
+                </section>
+
+                <div class="clearfix"></div>
+            </li>
+        </script>
+
+        <script id="template1" type="text/x-handlebars-template">
+            <li class="item-list" data-id="{{id}}">
+                <img src="{{image_path}}" alt="">
+                <section class="list-left">
+                    <h5 class="title">{{item_name}}</h5>
+                    <span class="adprice">{{price}}</span>
+                </section>
+                <section class="list-right">
+                    <span class="method">{{address}}</span>
+                    <br>
+                    <span class="ordered_at">Delivery service was order at {{ordered_at}}</span>
+                    <a href="order_delivery.php" class="btn btn-warning btn-md delivery" role="button">Order Delivery</a>
                 </section>
 
                 <div class="clearfix"></div>
@@ -66,16 +103,71 @@
 
         <script type="text/javascript">
             jQuery(document).ready(function($) {
+                console.log(js_array1);
+                console.log(js_array);
                 var source   = document.getElementById("template").innerHTML;
                 var template = Handlebars.compile(source);
                 for (var i = 0; i < js_array.length; i++)
-                {
+                {       
+                    if (js_array[i].verified == "0") 
+                    {
+                        js_array[i].verified = "Not verified";
+                    } else {
+                        js_array[i].verified = "Verified";
+                    }
+                    if (js_array[i].available == "0") 
+                    {
+                        js_array[i].available = "Bought";
+                    } else {
+                        js_array[i].available = "";
+                    }
                     var context = js_array[i];
                     var html    = template(context);
                     $("#sell").append(html);
                 }
 
-                $(".list-right a").on('click', function(event) {
+                source   = document.getElementById("template1").innerHTML;
+                template = Handlebars.compile(source);
+                for (var i = 0; i < js_array1.length; i++)
+                {
+                    if (js_array1[i].address == "" ) {
+                       js_array1[i].address = "To be picked up at the warehouse"; 
+                    } else {
+                        js_array1[i].address = "To be delivered at given address";
+                    }
+                    var context = js_array1[i];
+                    var html    = template(context);
+                    $("#bought").append(html);
+                }
+
+                $(".delivery").on('click', function(event) {
+                    event.preventDefault();
+                    /* Act on the event */
+                    var id = $(this).parent().parent().attr('data-id');
+                    var object = {};
+                    object['id'] = id;
+                    console.log(object);
+                    var util = {};
+                    util.post = function() {
+                        var $form = $('<form>', {
+                            action: 'order_delivery.php',
+                            method: 'post'
+                        });
+
+                        $.each(object, function(key, val) {
+                         console.log(object);
+                         $('<input>').attr({
+                             type: "hidden",
+                             name: key,
+                             value: val
+                         }).appendTo($form);
+                        });
+                            $form.appendTo('body').submit();
+                    };
+                    util.post();
+                });
+
+                $(".shipping").on('click', function(event) {
                     event.preventDefault();
                     /* Act on the event */
                     var id = $(this).parent().parent().attr('data-id');
@@ -100,6 +192,23 @@
                     };
                     util.post();
                 });
+
+                 $(".verify").each(function(index, el) {
+                        console.log($(this).text());
+                        if ($(this).text() == "Verified") 
+                        {
+                            $(this).toggleClass('verified');
+                        } else {
+                            $(this).toggleClass('not-verified');
+                        }
+                    });
+                 $(".method").each(function(index, el) {
+                     if ($(this).text() == "To be delivered at given address") {
+                        $(this).parent().find('a').css('display', 'none');
+                     } else {
+                        $(this).parent().find('.ordered_at').css('display', 'none');
+                     }
+                 });
             });
             
         </script>
@@ -118,7 +227,7 @@
 
         <div class="container">
             <h4 style="text-align: left">Bought Item</h4>
-            <div class="item-container">
+            <div id="bought" class="item-container">
             </div>
         </div>
         <div class="container">

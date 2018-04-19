@@ -25,6 +25,7 @@ require_once 'database/connection.php';
 $query = "select * from items where id ='".$_POST["id"]."';";
 $result= $link->query($query);
 $set = $result->fetch_assoc();
+echo "<script>var id =".$_POST["id"]." </script>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +66,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" href="css/flexslider.css" media="screen" />
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
+			$("#buy-button").click(function(event) {
+				event.preventDefault();
+				/* Act on the event */
+				    var object={};
+                    object.id = id;
+                    object.buy = true;
+					var util = {};
+                    util.post = function() {
+                        var $form = $('<form>', {
+                            action: 'buying.php',
+                            method: 'post'
+                        });
 
+                        $.each(object, function(key, val) {
+                         console.log(object);
+                         $('<input>').attr({
+                             type: "hidden",
+                             name: key,
+                             value: val
+                         }).appendTo($form);
+                        });
+                            $form.appendTo('body').submit();
+                    };
+                    util.post();
+			});
 		});
 	</script>
 </head>
@@ -153,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"></div>
 					<br>
-					<href="#" id="buy-button" class="btn btn-warning btn-md" role="button">Buy</a>
+					<a href="#" id="buy-button" class="btn btn-warning btn-md" role="button">Buy</a>
 				</div>
 			</div>
 		</div>

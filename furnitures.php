@@ -160,13 +160,13 @@ $(document).ready(function () {
 require_once 'database/connection.php';
 
 if (isset($_POST["input"])){
-$query = "select * from items where item_name  LIKE '%".$_POST['input']."%'";
+$query = "select * from items where item_name  LIKE '%".$_POST['input']."%' AND available = 1;";
 $result= $link->query($query);
 for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 $javascript = json_encode($set);
 echo "<script>var js_array =".$javascript." </script>";
 } elseif (isset($_POST["category"])){
-$query = "select * from items where category ='".$_POST["category"]."';";
+$query = "select * from items where category ='".$_POST["category"]."'AND available = 1;";
 $result= $link->query($query);
 for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 $javascript = json_encode($set);

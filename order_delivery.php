@@ -154,7 +154,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<section>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		<form action="welcome.php" method="post">
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
@@ -219,7 +219,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 						<div class="sub_home">
 							<div class="sub_home_left">
-								<input type="submit" name="order"  value="Confirm order" />
+								<input type="hidden" name="id" value="<?php echo $_POST['id']?>">
+								<input id="order" type="submit" name="delivery"  value="Confirm Delivery" />
 							</div>	
 							<div class="clearfix"></div>
 						</div>

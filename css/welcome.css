@@ -10,8 +10,6 @@ html
 	margin-bottom: 3%;
 }
 
-.item-container .btn-danger {
+.item-container .btn-danger,.item-container .btn-warning {
 	position: relative;
-	right: 10%;
-	top: 80%;
 }

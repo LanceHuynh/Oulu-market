@@ -51,7 +51,8 @@ font-size:
 font-weight:
 400
 ;
-height:
+height: auto;
+min-height:
 158.333px
 ;
 line-height:
@@ -63,7 +64,7 @@ none
 margin: 0 auto 30px auto;
 ;
 padding-bottom:
-20px
+50px
 ;
 padding-left:
 20px
@@ -372,3 +373,6 @@ width:
 -webkit-tap-highlight-color:
 rgba(0, 0, 0, 0)
 ; }
+
+.not-verified{ color: red; }
+.verified { color: green; }
