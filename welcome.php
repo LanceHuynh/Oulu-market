@@ -116,6 +116,7 @@
                         js_array[i].verified = "Not verified";
                     } else {
                         js_array[i].verified = "Verified";
+                        $('.shipping').css('display', 'none');
                     }
                     if (js_array[i].available == "0")
                     {
