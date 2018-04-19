@@ -14,11 +14,11 @@
         $result= $link->query($query);
         ;
     } elseif (isset($_POST['shipping'])) {
-        $query = "INSERT INTO shipping (item_id, owner_id, buyers_name, address, ordered_at, contact_num, status) VALUES (".$_POST['id'].",".$_SESSION['id'].",".$_POST['name'].",".$_POST['address'].",CURRENT_TIMESTAMP,0,0);";
+        $query = "INSERT INTO shipping (item_id, owner_id, buyers_name, address, ordered_at, contact_num, status) VALUES (".$_POST['id'].",".$_SESSION['id'].",'".$_POST['name']."','".$_POST['address']."',CURRENT_TIMESTAMP,0,0);";
         $result= $link->query($query);
     }
 
-    $query = "select * from items where added_by =".$_SESSION['id'].";";
+    $query = "SELECT items.id,item_name,price,added_at,verified,available,ordered_at,image_path,address  FROM items LEFT JOIN shipping ON items.id = shipping.item_id WHERE added_by = {$_SESSION['id']}";
     $result= $link->query($query);
     for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
     $javascript = json_encode($set);
@@ -73,10 +73,13 @@
                 </section>
                 <section class="list-right">
                     <span class="date">{{added_at}}</span>
+                    <span class="data" style="visibility: hidden;">{{address}}</span>
                     <br>
                      <span class="verify">{{verified}}</span>
                      <br>
                      <span class="available verified">{{available}}</span>
+                     <br>
+                     <span class="ordered_at">Shipping service was order at {{ordered_at}}</span>
                     <a href="order_shipping.php" class="btn btn-danger btn-md shipping" role="button">Order Shipping</a>
                 </section>
 
@@ -121,6 +124,10 @@
                         js_array[i].available = "Bought";
                     } else {
                         js_array[i].available = "";
+                    }
+                    if(js_array[i].address){
+                    	console.log(js_array[i].address);
+                    	js_array[i].address = "a";
                     }
                     var context = js_array[i];
                     var html    = template(context);
@@ -210,6 +217,15 @@
                         $(this).parent().find('.ordered_at').css('display', 'none');
                      }
                  });
+
+                 $(".shipping").each(function(index, el) {
+                 	 if ($(this).parent().find('.data').text() !== "") {
+                 	 	$(this).css('display', 'none');
+                 	 }
+                     if ($(this).css('display') !== "none") {
+                        $(this).parent().find('.ordered_at').css('display', 'none');
+                     } 
+                 });
             });
 
         </script>
@@ -225,9 +241,6 @@
           </div>
           <div class="header-right">
             <p><a href="logout.php" class="account" style="background-color:red;">Sign Out of Your Account</a></p>
-            <script>
-            $('#myModal').modal('');
-            </script>
           </div>
         </div>
       </div>
