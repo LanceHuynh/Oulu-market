@@ -80,9 +80,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 // Include config file
 require_once 'database/connection.php';
 
+$form_appears = true;
+
 // Define variables and initialize with empty values
 $username = $email = $password = $confirm_password = "";
-$username_err = $email_err = $password_err = $confirm_password_err = $registration_succ = "";
+$username_err = $email_err = $password_err = $confirm_password_err = $registration_succ_msg = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -194,8 +196,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                $registration_succ = "You have been registered. Please proceed to <a href=\"http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php\">login page.</a>";
-            } else{
+                $registration_succ_msg = "You have been registered. Please proceed to <a href=\"http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php\">login page.</a>";
+				$form_appears = false;
+			} else{
                 echo "Something went wrong. Please try again later.";
             }
         }
@@ -220,14 +223,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 	</div>
 </div>
-	 <section>
+<?php
+	if($form_appears == false) { ?>
+	<h4 style="text-align:center;">
+		You have been registered. Please proceed to <a href="http://www.students.oamk.fi/~t6dang00/Oulu-market/login.php">login page.</a>
+	</h4>
+	<br>
+	<br>
+<?php } ?>
+<section>
+	 <?php if($form_appears == true){ ?>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
 						<h1>Create an account</h1>
 						<br/>
-						<h3><?php echo $registration_succ; ?></h3>
+						<h3><?php echo $registration_succ_msg; ?></h3>
 						<br />
 						<h2>Personal Information</h2>
 						<div class="sign-u">
@@ -283,6 +295,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				</div>
 			</div>
 		</form>
+	 <?php } ?>
 		<!--footer section start-->
 		<footer>
 			<div class="footer-bottom text-center">
@@ -298,6 +311,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			</div>
 		</footer>
         <!--footer section end-->
-	</section>
+</section>
 </body>
 </html>
