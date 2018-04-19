@@ -157,6 +157,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h2 style="text-align:center;">
 				You have successfully ordered that item. See more about said item in <a href="welcome.php">My Account</a>.
 			</h2>
+			<br>
+			<br>
 	<?php } ?>
 	<div class="main-banner banner text-center">
 	  <div class="container">
