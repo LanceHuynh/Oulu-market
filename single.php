@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"></div>
 					<br>
-					<a href="#" id="buy-button" class="btn btn-warning btn-md" role="button">Buy</a>
+					<a href="" id="buy-button" class="btn btn-warning btn-md" role="button">Buy</a>
 				</div>
 			</div>
 		</div>

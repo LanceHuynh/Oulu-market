@@ -152,6 +152,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		</div>
 	</div>
+	<?php 
+		if(isset($_POST['buy'])){ ?>
+			<h2 style="text-align:center;">
+				You have successfully ordered that item. See more about said item in <a href="welcome.php">My Account</a>.
+			</h2>
+	<?php } ?>
 	<div class="main-banner banner text-center">
 	  <div class="container">
 			<h1>The first bazaar<span class="segment-heading">    in Oulu</span> with delivery</h1>
