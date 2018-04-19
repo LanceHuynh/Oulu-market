@@ -9,6 +9,15 @@
 
     require_once 'database/connection.php';
 
+    if (isset($_POST['delivery'])) {
+        $query = "UPDATE delivery SET name ='".$_POST['name']."', address ='".$_POST['address']."', contact_num =".$_POST['number'].", ordered_at = CURRENT_TIMESTAMP WHERE item_id = ".$_POST['id'].";";
+        $result= $link->query($query);
+        ;
+    } elseif (isset($_POST['shipping'])) {
+        $query = "UPDATE items SET available = 0 WHERE id =".$_POST['id'].";";;
+        $result= $link->query($query);
+    }
+
     $query = "select * from items where added_by =".$_SESSION['id'].";";
     $result= $link->query($query);
     for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
@@ -20,16 +29,6 @@
     for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
     $javascript = json_encode($set);
     echo "<script>var js_array1 =".$javascript." </script>";
-
-    if (isset($_POST['delivery'])) {
-        $query = "UPDATE delivery SET name ='".$_POST['name']."', address ='".$_POST['address']."', contact_num =".$_POST['number'].", ordered_at = CURRENT_TIMESTAMP WHERE item_id = ".$_POST['id'].";";
-        $result= $link->query($query);
-        ;
-    } elseif (isset($_POST['shipping'])) {
-        $query = "UPDATE items SET available = 0 WHERE id =".$_POST['id'].";";;
-        $result= $link->query($query);
-    }
-
 ?>
 
 
@@ -116,7 +115,6 @@
                         js_array[i].verified = "Not verified";
                     } else {
                         js_array[i].verified = "Verified";
-                        $('.shipping').css('display', 'none');
                     }
                     if (js_array[i].available == "0")
                     {
@@ -195,12 +193,12 @@
                     };
                     util.post();
                 });
-
                  $(".verify").each(function(index, el) {
                         console.log($(this).text());
                         if ($(this).text() == "Verified")
                         {
                             $(this).toggleClass('verified');
+                            $(this).parent().find('a').css('display', 'none');
                         } else {
                             $(this).toggleClass('not-verified');
                         }

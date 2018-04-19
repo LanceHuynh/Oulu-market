@@ -1,9 +1,8 @@
 <?php
-$config = parse_ini_file('/home/otek/06/t6dang00/db.ini');
-$servername = 'mysli.oamk.fi';
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['db'];
+$servername = 'localhost';
+$username = 'lan';
+$password = 'ngunhubo';
+$dbname = 'lan';
 	
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 

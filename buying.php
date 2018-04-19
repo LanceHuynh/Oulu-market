@@ -201,7 +201,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="focus-border">
 								<div class="focus-layout">
 									<div class="focus-image"><i class="fa fa-book"></i></div>
-									<h4 class="clrchg">Books, Sports & Hobbies</h4>
+									<h4 class="clrchg">Books, Sports and hobbies</h4>
 								</div>
 							</div>
 						</a>
