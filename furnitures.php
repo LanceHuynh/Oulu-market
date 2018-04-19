@@ -161,7 +161,7 @@ $(document).ready(function () {
 require_once 'database/connection.php';
 
 if (isset($_POST["input"])){
-$query = "select * from items where item_name  LIKE '%".$_POST['input']."%' AND available = 1;";
+$query = "select * from items where item_name  LIKE '%".$_POST['input']."%' AND available = 1; AND verified = 1";
 $result= $link->query($query);
 for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
 $javascript = json_encode($set);
