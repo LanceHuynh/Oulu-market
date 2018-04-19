@@ -1,7 +1,6 @@
-﻿<?php
+<?php
 session_start();
 $_SESSION['start'] = time();
-
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome =  "My Account";
 	$pleaseLogin = "You are about to order item below";
@@ -14,7 +13,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	$welcome = "Login";
 	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
 }
-
 	
 // Include config file
 require_once 'database/connection.php';
@@ -23,12 +21,10 @@ if (isset($_POST["id"])) {
 	$result= $link->query($query);
 	$set = $result->fetch_assoc();
 }
-
 //Declare variables
 $name = $address = $number = "";
 $name_err = $address_err = $number_err = "";
 $item_id = $user_id = $order_delivery_message = "";
-
 if(isset($_POST['order'])){
 	//Validate contact information
 	if(empty(trim($_POST["name"]))){
@@ -46,21 +42,17 @@ if(isset($_POST['order'])){
 	}else{
 		$number = trim($_POST["number"]);
 	}
-
 	if (empty($name_err) && empty($address_err) && empty($number_err))
 	{
 		$sql = "INSERT INTO delivery (item_id, bought_by, name, address, contact_num, status) VALUES (?, ?, ?, ?, ?, ?)";
-
 		if($stmt = mysqli_prepare($link, $sql)){
 			mysqli_stmt_bind_param($stmt, "iissii", $param_itemID, $param_boughtBy, $param_name, $param_address, $param_contactNum, $param_status);
-
 			$param_itemID = 1;
 			$param_boughtBy = $_SESSION['id'];
 			$param_name = $name;
 			$param_address = $address;
 			$param_contactNum = $number;
 			$param_status = 0;
-
 			if(mysqli_stmt_execute($stmt)){
 				header("location: welcome.php");
 			} else{
@@ -84,6 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 	<title>Oulu Market</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="16x16">
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/bootstrap-select.css" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -106,17 +99,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script>
 		$(document).ready(function () {
 			var mySelect = $('#first-disabled2');
-
 			$('#special').on('click', function () {
 				mySelect.find('option:selected').prop('disabled', true);
 				mySelect.selectpicker('refresh');
 			});
-
 			$('#special2').on('click', function () {
 				mySelect.find('option:disabled').prop('disabled', false);
 				mySelect.selectpicker('refresh');
 			});
-
 			$('#basic2').selectpicker({
 				liveSearch: true,
 				maxOptions: 1

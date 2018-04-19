@@ -31,6 +31,7 @@ echo "<script>var id =".$_POST["id"]." </script>";
 <html>
 <head>
 	<title>Product Information</title>
+	<link rel="icon" type="image/png" href="images/favicon.png" sizes="16x16">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/bootstrap-select.css" />
