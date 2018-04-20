@@ -224,7 +224,7 @@
                  	 }
                      if ($(this).css('display') !== "none") {
                         $(this).parent().find('.ordered_at').css('display', 'none');
-                     } 
+                     }
                  });
             });
 
@@ -251,17 +251,36 @@
 
         </div>
 
+        <br>
         <div class="container">
             <h4 style="text-align: left">Bought Item</h4>
             <div id="bought" class="item-container">
             </div>
         </div>
+        <br>
         <div class="container">
             <h4 style="text-align: left">Your Listed Item</h4>
             <div id="sell" class="item-container">
 
             </div>
         </div>
+        <br>
+
+        <!--footer section start-->
+    		<footer>
+    			<div class="footer-bottom text-center">
+    			<div class="container">
+    				<div class="footer-logo">
+    					<a href="index.php"><span>Oulu</span>Market</a>
+    				</div>
+    				<div class="copyrights">
+    					<p> © 2018 OuluMarket. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+    				</div>
+    				<div class="clearfix"></div>
+    			</div>
+    		</div>
+    		</footer>
+        <!--footer section end-->
 
     </body>
 
