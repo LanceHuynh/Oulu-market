@@ -63,29 +63,7 @@
         body{ font: 14px sans-serif; text-align: center; }
         button{
             float: left;
-            background-color: white;
-            background-image: -webkit-linear-gradient(top, white, white);
-            background-image: -moz-linear-gradient(top,white,white);
-            border:#4FAFC2 solid 2px;
-            font-size: 18px;
-            font-family: 'Meiryo UI';
-            color: #4FAFC2;
-            text-decoration: none !important;
-            padding: 5px 15px;
-            border-radius: 2px;
-            -webkit-border-radius: 2px;
-            -moz-border-radius: 2px;
-            -ms-border-radius: 2px;
-            -o-border-radius: 2px;
-            margin-top: 13px;
-            margin-bottom: 10px;
-            margin-left: 5px;
-            min-width: 145px;
-        }
-        button:hover {
-            opacity: 0.9;
-            background:#4FAFC2;
-            color:white;
+            min-width: 155px;
         }
     </style>
     <script id="template" type="text/x-handlebars-template">
@@ -323,7 +301,7 @@
     <?php } ?>
     <br>
     <div class="container">
-        <button data-toggle="collapse" data-target="#bought">Bought Items</button>
+        <button class="button" data-toggle="collapse" data-target="#bought">Bought Items</button>
     </div>
     <div class="container">
         <div id="bought" class="item-container collapse">
@@ -331,7 +309,7 @@
     </div>
     <br>
     <div class="container">
-        <button data-toggle="collapse" data-target="#sell">Listed Items</button>
+        <button class="button" data-toggle="collapse" data-target="#sell">Listed Items</button>
     </div>
     <div class="container">
         <div id="sell" class="item-container collapse"/>
