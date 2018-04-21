@@ -22,10 +22,16 @@ $welcome = "Login";
 
 require_once 'database/connection.php';
 
-$query = "select * from items where id ='".$_POST["id"]."';";
-$result= $link->query($query);
-$set = $result->fetch_assoc();
-echo "<script>var id =".$_POST["id"]." </script>";
+if (isset($_POST["id"])) {
+	$query = "select * from items where id ='".$_POST["id"]."';";
+	$result= $link->query($query);
+	$set = $result->fetch_assoc();
+	echo "<script>var id =".$_POST["id"]." </script>";
+} else {
+	header("location: index.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -20,6 +20,9 @@ if (isset($_POST["id"])) {
 	$query = "select * from items where id ='".$_POST["id"]."';";
 	$result= $link->query($query);
 	$set = $result->fetch_assoc();
+} else {
+	header("location: index.php");
+    exit;
 }
 //Declare variables
 $name = $address = $number = "";
