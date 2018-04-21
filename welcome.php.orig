@@ -239,11 +239,6 @@
                         action: 'welcome.php',
                         method: 'post'
                     });
-                 $(".available").each(function(index, el) {
-                 	if ($(this).text()) {
-                 		$(this).parent().find('.claim').css('display', 'block');
-                 	}
-                 });
 
                     $.each(object, function(key, val) {
                         console.log(object);
@@ -304,7 +299,6 @@
                 <a class="account" href="index.php">Home</a>
                 <a href="logout.php" class="account">Sign Out of Your Account</a>
             </p>
-          </div>
         </div>
     </div>
 </div>
@@ -324,16 +318,22 @@
     <br>
     <div class="container">
         <button data-toggle="collapse" data-target="#bought">Bought Items</button>
+<<<<<<< HEAD
     </div>
     <div class="container">
+=======
+>>>>>>> eef17c37e8d3b81da9da0df053ea2ae83bc01827
         <div id="bought" class="item-container collapse">
         </div>
     </div>
     <br>
     <div class="container">
         <button data-toggle="collapse" data-target="#sell">Listed Items</button>
+<<<<<<< HEAD
     </div>
     <div class="container">
+=======
+>>>>>>> eef17c37e8d3b81da9da0df053ea2ae83bc01827
         <div id="sell" class="item-container collapse"/>
     </div>
     <br>
