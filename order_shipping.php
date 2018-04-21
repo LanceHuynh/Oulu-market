@@ -143,6 +143,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<a class="account" href="login.php">
 					<?php echo $welcome; ?>
 				</a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 			</div>
 		</div>

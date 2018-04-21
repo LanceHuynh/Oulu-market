@@ -281,7 +281,10 @@
             <a href="index.php"><img src="images/logo.png" alt="Logo" style="width:150px;height:150px;"><span>Oulu</span>Market</a>
           </div>
           <div class="header-right">
-            <p><a href="logout.php" class="account" style="background-color:red;">Sign Out of Your Account</a></p>
+            <p>
+                <a class="account" href="index.php">Home</a>
+                <a href="logout.php" class="account">Sign Out of Your Account</a>
+            </p>
           </div>
         </div>
       </div>
