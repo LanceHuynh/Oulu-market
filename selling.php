@@ -86,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 // Check for post data.
 require_once 'database/connection.php';
 
-$name = $description = $price = $category = $image = "";
+$name = $description = $price = $category = $image = $target_file = "";
 $name_err = $description_err = $price_err = $category_err = $image_err = "";
 
 if ($_POST && !empty($_FILES)) {
