@@ -18,6 +18,12 @@
         $result= $link->query($query);
     }
 
+    if (isset($_POST['claim'])) {
+        $query = "DELETE FROM items where id = {$_POST['id']};";
+        $result= $link->query($query);
+    
+    }
+
     $query = "SELECT items.id,item_name,price,added_at,verified,available,ordered_at,image_path,address  FROM items LEFT JOIN shipping ON items.id = shipping.item_id WHERE added_by = {$_SESSION['id']}";
     $result= $link->query($query);
     for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
@@ -81,6 +87,7 @@
                      <br>
                      <span class="ordered_at">Shipping service was order at {{ordered_at}}</span>
                     <a href="order_shipping.php" class="btn btn-danger btn-md shipping" role="button">Order Shipping</a>
+                    <a href="#" class="btn btn-success btn-md claim" role="button" style="display: none;">Claim</a>
                 </section>
 
                 <div class="clearfix"></div>
@@ -200,16 +207,50 @@
                     };
                     util.post();
                 });
+
+                $(".claim").on('click', function(event) {
+                    event.preventDefault();
+                    /* Act on the event */
+                    var id = $(this).parent().parent().attr('data-id');
+                    var object = {};
+                    object['id'] = id;
+                    object['claim'] = "claim";
+                    var util = {};
+                    util.post = function() {
+                        var $form = $('<form>', {
+                            action: 'welcome.php',
+                            method: 'post'
+                        });
+
+                        $.each(object, function(key, val) {
+                         console.log(object);
+                         $('<input>').attr({
+                             type: "hidden",
+                             name: key,
+                             value: val
+                         }).appendTo($form);
+                        });
+                            $form.appendTo('body').submit();
+                    };
+                    util.post();
+                });
                  $(".verify").each(function(index, el) {
                         console.log($(this).text());
                         if ($(this).text() == "Verified")
                         {
                             $(this).toggleClass('verified');
                             $(this).parent().find('a').css('display', 'none');
+                            $(this).parent().find('.ordered_at').css('display', 'none');
                         } else {
                             $(this).toggleClass('not-verified');
                         }
                     });
+                 $(".available").each(function(index, el) {
+                 	if ($(this).text()) {
+                 		$(this).parent().find('.claim').css('display', 'block');
+                 	}
+                 });
+
                  $(".method").each(function(index, el) {
                      if ($(this).text() == "To be delivered at given address") {
                         $(this).parent().find('a').css('display', 'none');
@@ -252,6 +293,14 @@
         </div>
 
         <br>
+        <?php 
+		if(isset($_POST['claim'])){ ?>
+			<h2 style="text-align:center;">
+				You have successfully claim the income for the item</a>.
+			</h2>
+			<br>
+			<br>
+	<?php } ?>
         <div class="container">
             <h4 style="text-align: left">Bought Item</h4>
             <div id="bought" class="item-container">
