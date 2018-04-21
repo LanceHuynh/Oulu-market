@@ -101,21 +101,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<a href="selling.php">Start selling</a>
 			<a href="buying.php">Start buying</a>
 	  </div>
-	</div>
-  <!-- Who we are -->
-			<div class="trending-ads">
-				<div class="container">
-			</div>
+    </div>
 			<div class="mobile-app">
 				<div class="container">
 					<div class="col-md-7 app-right">
 						<h3>Oulu Market is the <span>BEST</span> way for Selling and buying second-hand goods</h3>
-            <p>We are OAMK students. This site was create for Software Development project 2<br>
-            GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
+                        <p>We are OAMK students. This site was create for Software Development project 2<br>
+                        GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
 					</div>
 				</div>
 			</div>
-		</div>
 		<!--footer section start-->
 		<footer>
 			<div class="footer-bottom text-center">
