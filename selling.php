@@ -1,19 +1,18 @@
 <?php
-	session_start();
-	$_SESSION['start'] = time();
-
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-	$pleaseLogin = "Item information";
-		
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
-		}
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $welcome =  "My Account";
+    $pleaseLogin = "Item information";
+    if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+        session_unset();
+        session_destroy();
+        $welcome = "Login";
+    }else{
+        $_SESSION['start'] = time();
+    }
 	}else{
-	$welcome = "Login";
-	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
+        $welcome = "Login";
+        $pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
 	}
 ?>
 <!--
