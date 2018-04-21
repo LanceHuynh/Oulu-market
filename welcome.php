@@ -318,7 +318,7 @@
 </div>
 <!--footer section start-->
 <footer>
-    <div class="footer-bottom text-center">
+    <div class="footer-bottom text-center" style="position: fixed;bottom: 0px;width: 100%;">
         <div class="container">
             <div class="footer-logo">
                 <a href="index.php"><span>Oulu</span>Market</a>
