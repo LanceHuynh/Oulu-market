@@ -168,7 +168,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="product-price">
 								<p class="p-price">Price</p>
 								<h3 class="rate">
-									<?php echo $set['price']?>
+									<?php echo $set['price'].'€'?>
 								</h3>
 								<div class="clearfix"></div>
 							</div>
@@ -205,7 +205,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<h4>Your phone* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($number_err)) ? 'has-error' : ''; ?>">
-								<input type="number" name="number" placeholder="Your number" class="form-control" value="<?php echo $number; ?>" />
+								<input type="tel" name="number" placeholder="Your number" class="form-control" value="<?php echo $number; ?>" />
 								<span class="help-block">
 									<?php echo $number_err; ?>
 								</span>

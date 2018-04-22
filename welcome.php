@@ -35,6 +35,14 @@
     for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
     $javascript = json_encode($set);
     echo "<script>var js_array1 =".$javascript." </script>";
+
+    if (isset($_SESSION['usr_lvl']) && $_SESSION['usr_lvl'] == 1){
+        $query = "SELECT id, item_name, price, added_at, description, image_path FROM items WHERE verified = 0";
+        $result= $link->query($query);
+        for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+        $javascript = json_encode($set);
+        echo "<script>var js_array2 =".$javascript." </script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +79,7 @@
             <img src="{{image_path}}" alt="">
             <section class="list-left">
                 <h5 class="title">{{item_name}}</h5>
-                <span class="adprice">{{price}}</span>
+                <span class="adprice">{{price}}€</span>
             </section>
             <section class="list-right">
                 <span class="date">{{added_at}}</span>
@@ -95,13 +103,30 @@
             <img src="{{image_path}}" alt="">
             <section class="list-left">
                 <h5 class="title">{{item_name}}</h5>
-                <span class="adprice">{{price}}</span>
+                <span class="adprice">{{price}}€</span>
             </section>
             <section class="list-right">
                 <span class="method">{{address}}</span>
                 <br>
                 <span class="ordered_at">Delivery service was order at {{ordered_at}}</span>
                 <a href="order_delivery.php" class="btn btn-warning btn-md delivery" role="button">Order Delivery</a>
+            </section>
+
+            <div class="clearfix"></div>
+        </li>
+    </script>
+
+    <script id="template2" type="text/x-handlebars-template">
+        <li class="item-list" data-id="{{id}}">
+            <img src="{{image_path}}" alt="">
+            <section class="list-left">
+                <h5 class="title">{{item_name}}</h5>
+                <span class="adprice">{{price}}€</span>
+                <span>{{description}}</span>
+            </section>
+            <section class="list-right">
+                <span class="date">{{added_at}}</span>
+                <a href="verify.php" class="btn btn-danger btn-md verify-item" role="button" style="margin-top: 60px">Verify Item</a>
             </section>
 
             <div class="clearfix"></div>
@@ -150,6 +175,17 @@
                 var html    = template(context);
                 $("#bought").append(html);
             }
+
+            source   = document.getElementById("template2").innerHTML;
+            template = Handlebars.compile(source);
+            for (var i = 0; i < js_array2.length; i++)
+            {
+                var context = js_array2[i];
+                var html    = template(context);
+                $("#verify").append(html);
+            }
+
+
 
             $(".delivery").on('click', function(event) {
                 event.preventDefault();
@@ -235,6 +271,34 @@
                 };
                 util.post();
             });
+
+            $(".verify-item").on('click', function(event) {
+                event.preventDefault();
+                /* Act on the event */
+                var id = $(this).parent().parent().attr('data-id');
+                var object = {};
+                object['id'] = id;
+                console.log(object);
+                var util = {};
+                util.post = function() {
+                    var $form = $('<form>', {
+                        action: 'verify.php',
+                        method: 'post'
+                    });
+
+                    $.each(object, function(key, val) {
+                        console.log(object);
+                        $('<input>').attr({
+                            type: "hidden",
+                            name: key,
+                            value: val
+                        }).appendTo($form);
+                    });
+                    $form.appendTo('body').submit();
+                };
+                util.post();
+            });
+
             $(".verify").each(function(index, el) {
                 console.log($(this).text());
                 if ($(this).text() == "Verified")
@@ -282,7 +346,6 @@
                 <a class="account" href="index.php">Home</a>
                 <a href="logout.php" class="account">Sign Out of Your Account</a>
             </p>
-          </div>
         </div>
     </div>
 </div>
@@ -304,17 +367,26 @@
         <button class="button" data-toggle="collapse" data-target="#bought">Bought Items</button>
     </div>
     <div class="container">
-        <div id="bought" class="item-container collapse">
-        </div>
+        <div id="bought" class="item-container collapse"></div>
     </div>
     <br>
     <div class="container">
         <button class="button" data-toggle="collapse" data-target="#sell">Listed Items</button>
     </div>
     <div class="container">
-        <div id="sell" class="item-container collapse"/>
+        <div id="sell" class="item-container collapse"></div>
     </div>
     <br>
+    <?php
+    if (isset($_SESSION['usr_lvl']) && $_SESSION['usr_lvl'] == 1)
+        echo "    <div class=\"container\">
+        <button class=\"button\" data-toggle=\"collapse\" data-target=\"#verify\">Verify Items</button>
+    </div>
+    <div class=\"container\">
+        <div id=\"verify\" class=\"item-container collapse\"></div>
+    </div>
+    <br>";
+    ?>
 </div>
 <!--footer section start-->
 <footer>
