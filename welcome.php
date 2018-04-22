@@ -258,6 +258,7 @@
                  		$(this).parent().find('.claim').css('display', 'block');
                  	}
                  });
+
                     $.each(object, function(key, val) {
                         console.log(object);
                         $('<input>').attr({
@@ -297,7 +298,6 @@
                 };
                 util.post();
             });
-
             $(".verify").each(function(index, el) {
                 console.log($(this).text());
                 if ($(this).text() == "Verified")
@@ -345,9 +345,9 @@
                 <a class="account" href="index.php">Home</a>
                 <a href="logout.php" class="account">Sign Out of Your Account</a>
             </p>
+          </div>
         </div>
     </div>
-</div>
 <div>
     <div class="page-header">
         <h4>Hi, <b><?php echo htmlspecialchars($_SESSION['login']); ?></b>. Welcome to Oulu Market.</h4>
