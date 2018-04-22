@@ -258,7 +258,6 @@
                  		$(this).parent().find('.claim').css('display', 'block');
                  	}
                  });
-
                     $.each(object, function(key, val) {
                         console.log(object);
                         $('<input>').attr({
