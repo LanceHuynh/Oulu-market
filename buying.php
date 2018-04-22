@@ -189,7 +189,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="focus-border">
 								<div class="focus-layout">
 									<div class="focus-image"><i class="fa fa-laptop"></i></div>
-									<h4 class="clrchg"> Electronics & Appliances</h4>
+									<h4 class="clrchg">Electronics and Appliances</h4>
 								</div>
 							</div>
 						</a>
