@@ -155,10 +155,8 @@ if ($_POST && !empty($_FILES)) {
 			$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image_path) VALUES ('{$name}', '{$description}', '{$category}', '{$price}', 0, '1', '{$_SESSION['id']}', '{$target_file}')";
 
 			if (mysqli_query($link, $sql)) {
-				echo("Image was uploaded");
+			    mysqli_close($link);
 				header("location: welcome.php");
-			} else {
-				echo("Image was NOT uploaded");
 			}
 		}
 	}
