@@ -1,15 +1,16 @@
 ﻿<?php
 session_start();
-$_SESSION['start'] = time();
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-	$pleaseLogin = "You are about to order item below";
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
-	}
+    $welcome =  "My Account";
+    $pleaseLogin = "You are about to order item below";
+    if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+        session_unset();
+        session_destroy();
+        $welcome = "Login";
+    }else{
+        $_SESSION['start'] = time();
+    }
 }else{
 	$welcome = "Login";
 	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to order an item!</span>";
@@ -22,6 +23,9 @@ if (isset($_POST["id"])) {
 	$query = "select * from items where id ='".$_POST["id"]."';";
 	$result= $link->query($query);
 	$set = $result->fetch_assoc();
+} else {
+	header("location: index.php");
+    exit;
 }
 
 //Declare variables
@@ -150,6 +154,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<a class="account" href="login.php">
 					<?php echo $welcome; ?>
 				</a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 			</div>
 		</div>
@@ -174,7 +179,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="product-price">
 								<p class="p-price">Price</p>
 								<h3 class="rate">
-									<?php echo $set['price']?>
+									<?php echo $set['price'].'€'?>
 								</h3>
 								<div class="clearfix"></div>
 							</div>
@@ -211,7 +216,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<h4>Your phone* :</h4>
 							</div>
 							<div class="sign-up2 form-group <?php echo (!empty($number_err)) ? 'has-error' : ''; ?>">
-								<input type="number" name="number" placeholder="Your number" class="form-control" value="<?php echo $number; ?>" />
+								<input type="tel" name="number" placeholder="Your number" class="form-control" value="<?php echo $number; ?>" />
 								<span class="help-block">
 									<?php echo $number_err; ?>
 								</span>

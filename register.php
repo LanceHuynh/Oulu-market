@@ -1,18 +1,17 @@
 <?php
-	session_start();
-	$_SESSION['start'] = time();
-
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
-		}
-	}else{
-	$welcome = "Login";
-	}
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $welcome =  "My Account";
+    if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+        session_unset();
+        session_destroy();
+        $welcome = "Login";
+    }else{
+        $_SESSION['start'] = time();
+    }
+}else{
+    $welcome = "Login";
+}
 ?>
 <!--
 Author: W3layouts
@@ -219,6 +218,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 		<div class="header-right">
 			<a class="account" href="login.php"><?php echo $welcome; ?></a>
+            <a class="account" href="register.php">Register</a>
 			<a class="account" href="contact.php">Contact</a>
 		</div>
 	</div>
@@ -298,7 +298,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 <?php } ?>
 		<!--footer section start-->
 		<footer>
-			<div class="footer-bottom text-center">
+			<div class="footer-bottom text-center" style="position: fixed;bottom: 0px;width: 100%;">
 				<div class="container">
 					<div class="footer-logo">
 						<a href="index.php"><span>Oulu</span>Market</a>

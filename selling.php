@@ -1,19 +1,18 @@
 <?php
-	session_start();
-	$_SESSION['start'] = time();
-
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-	$pleaseLogin = "Item information";
-		
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
-		}
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $welcome =  "My Account";
+    $pleaseLogin = "Item information";
+    if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+        session_unset();
+        session_destroy();
+        $welcome = "Login";
+    }else{
+        $_SESSION['start'] = time();
+    }
 	}else{
-	$welcome = "Login";
-	$pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
+        $welcome = "Login";
+        $pleaseLogin = "<span style=\"font-size:48px\">You must log in first to start selling!</span>";
 	}
 ?>
 <!--
@@ -86,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 // Check for post data.
 require_once 'database/connection.php';
 
-$name = $description = $price = $category = $image = "";
+$name = $description = $price = $category = $image = $target_file = "";
 $name_err = $description_err = $price_err = $category_err = $image_err = "";
 
 if ($_POST && !empty($_FILES)) {
@@ -156,10 +155,8 @@ if ($_POST && !empty($_FILES)) {
 			$sql = "INSERT INTO items (item_name, description, category, price, verified, available, added_by, image_path) VALUES ('{$name}', '{$description}', '{$category}', '{$price}', 0, '1', '{$_SESSION['id']}', '{$target_file}')";
 
 			if (mysqli_query($link, $sql)) {
-				echo("Image was uploaded");
+			    mysqli_close($link);
 				header("location: welcome.php");
-			} else {
-				echo("Image was NOT uploaded");
 			}
 		}
 	}
@@ -178,6 +175,7 @@ if ($_POST && !empty($_FILES)) {
 				<a class="account" href="login.php">
 					<?php echo $welcome; ?>
 				</a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 				<script>
 				$('#myModal').modal('');

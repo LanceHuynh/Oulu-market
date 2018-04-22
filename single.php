@@ -6,26 +6,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 session_start();
-$_SESSION['start'] = time();
-
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-$welcome =  "My Account";
-
-if(time()>$_SESSION['start']+900){
-	session_unset();
-	session_destroy();
-	$welcome = "Login";
-	}
+    $welcome =  "My Account";
+    if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+        session_unset();
+        session_destroy();
+        $welcome = "Login";
+    }else{
+        $_SESSION['start'] = time();
+    }
 }else{
-$welcome = "Login";
+    $welcome = "Login";
 }
 
 require_once 'database/connection.php';
 
-$query = "select * from items where id ='".$_POST["id"]."';";
-$result= $link->query($query);
-$set = $result->fetch_assoc();
-echo "<script>var id =".$_POST["id"]." </script>";
+if (isset($_POST["id"])) {
+	$query = "select * from items where id ='".$_POST["id"]."';";
+	$result= $link->query($query);
+	$set = $result->fetch_assoc();
+	echo "<script>var id =".$_POST["id"]." </script>";
+} else {
+	header("location: index.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -108,6 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a class="account" href="login.php">
 					<?php echo $welcome; ?>
 				</a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 				<script>
 					$('#myModal').modal('');

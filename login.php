@@ -107,9 +107,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		// Validate credentials
 		if(empty($login_err) && empty($password_err)){
 
-			$sql_mail = "SELECT email, password, id FROM user WHERE email = ?";
+			$sql_mail = "SELECT email, password, id, userLevel FROM user WHERE email = ?";
 
-			$sql_usr = "SELECT username, password, id FROM user WHERE username = ?";
+			$sql_usr = "SELECT username, password, id, userLevel FROM user WHERE username = ?";
 
 			if(is_email($login)){
 				$stmt = mysqli_prepare($link, $sql_mail);
@@ -133,7 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					// Check if email exists, if yes then verify password
 					if(mysqli_stmt_num_rows($stmt) == 1){
 						// Bind result variables
-						mysqli_stmt_bind_result($stmt, $login, $hashed_password, $id);
+						mysqli_stmt_bind_result($stmt, $login, $hashed_password, $id, $usr_lvl);
 
 						if(mysqli_stmt_fetch($stmt)){
 							if(password_verify($password, $hashed_password)) {
@@ -143,6 +143,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								$_SESSION['loggedin'] = true;
 								$_SESSION['login'] = $login;
 								$_SESSION['id'] = $id;
+								$_SESSION['usr_lvl'] = $usr_lvl;
 								header("location: index.php");
 							}else{
 								// Display an error message if password is not valid
@@ -175,6 +176,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="header-right">
 				<a class="account" href="login.php"><?php echo $welcome; ?></a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 			</div>
 		</div>
@@ -226,7 +228,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<!--footer section start-->
 		 <footer>
-			 <div class="footer-bottom text-center">
+			 <div class="footer-bottom text-center" style="position: fixed;bottom: 0px;width: 100%;">
 				 <div class="container">
 					 <div class="footer-logo">
 						 <a href="index.php"><span>Oulu</span>Market</a>

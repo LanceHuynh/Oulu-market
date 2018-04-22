@@ -1,17 +1,16 @@
 ﻿<?php
 	session_start();
-	$_SESSION['start'] = time();
-
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	$welcome =  "My Account";
-
-	if(time()>$_SESSION['start']+900){
-		session_unset();
-		session_destroy();
-		$welcome = "Login";
-		}
+	    $welcome =  "My Account";
+        if(isset($_SESSION['start']) && time()>$_SESSION['start']+900){
+            session_unset();
+            session_destroy();
+            $welcome = "Login";
+        }else{
+            $_SESSION['start'] = time();
+        }
 	}else{
-	$welcome = "Login";
+	    $welcome = "Login";
 	}
 ?>
 
@@ -87,6 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="header-right">
 			<a class="account" href="login.php"><?php echo $welcome; ?></a>
+                <a class="account" href="register.php">Register</a>
 				<a class="account" href="contact.php">Contact</a>
 				<script>
 				$('#myModal').modal('');
@@ -101,21 +101,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<a href="selling.php">Start selling</a>
 			<a href="buying.php">Start buying</a>
 	  </div>
-	</div>
-  <!-- Who we are -->
-			<div class="trending-ads">
-				<div class="container">
-			</div>
+    </div>
 			<div class="mobile-app">
 				<div class="container">
 					<div class="col-md-7 app-right">
 						<h3>Oulu Market is the <span>BEST</span> way for Selling and buying second-hand goods</h3>
-            <p>We are OAMK students. This site was create for Software Development project 2<br>
-            GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
+                        <p>We are OAMK students. This site was create for Software Development project 2<br>
+                        GROUP 7: Dao Nguyen Thanh Hung, Huynh Hoang Lan, Kunik Jan, Glos Daniel</p>
 					</div>
 				</div>
 			</div>
-		</div>
 		<!--footer section start-->
 		<footer>
 			<div class="footer-bottom text-center">
