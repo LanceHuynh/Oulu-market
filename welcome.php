@@ -66,6 +66,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/handlebars-v4.0.11.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <style type="text/css">
 
         body{ font: 14px sans-serif; text-align: center; }
@@ -175,15 +176,17 @@
                 var html    = template(context);
                 $("#bought").append(html);
             }
-
-            source   = document.getElementById("template2").innerHTML;
-            template = Handlebars.compile(source);
-            for (var i = 0; i < js_array2.length; i++)
-            {
-                var context = js_array2[i];
-                var html    = template(context);
-                $("#verify").append(html);
-            }
+            if (window.hasOwnProperty( "js_array2" )) {
+            	source   = document.getElementById("template2").innerHTML;
+	            template = Handlebars.compile(source);
+	            for (var i = 0; i < js_array2.length; i++)
+	            {
+	                var context = js_array2[i];
+	                var html    = template(context);
+	                $("#verify").append(html);
+	            }
+        	}
+            
 
 
 
@@ -331,6 +334,11 @@
                     $(this).parent().find('.ordered_at').css('display', 'none');
                 }
             });
+
+            $(".button").click(function(event) {
+            	console.log('hah');
+            		$(this).find('i').toggleClass('rotate');
+            });
         });
     </script>
 </head>
@@ -363,14 +371,14 @@
     <?php } ?>
     <br>
     <div class="container">
-        <button class="button" data-toggle="collapse" data-target="#bought">Bought Items</button>
+        <button class="button" data-toggle="collapse" data-target="#bought">Bought Items <i class="fas fa-caret-down"></i></button>
     </div>
     <div class="container">
         <div id="bought" class="item-container collapse"></div>
     </div>
     <br>
     <div class="container">
-        <button class="button" data-toggle="collapse" data-target="#sell">Listed Items</button>
+        <button class="button" data-toggle="collapse" data-target="#sell">Listed Items <i class="fas fa-caret-down"></i></button>
     </div>
     <div class="container">
         <div id="sell" class="item-container collapse"></div>

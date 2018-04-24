@@ -376,3 +376,5 @@ rgba(0, 0, 0, 0)
 
 .not-verified{ color: red; }
 .verified { color: green; }
+.rotate { transform: rotate(-180deg);}
+.fa-caret-down {transition: transform 0.2s ease;}
